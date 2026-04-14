@@ -7,7 +7,8 @@
     <link rel="stylesheet" href="css/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- Video Background -->
@@ -17,33 +18,59 @@
 
     <!-- Video Overlay -->
     <div class="video-overlay"></div>
+    
+    <!-- Transition Gradient -->
+    <div class="transition-gradient"></div>
+    
+    <!-- Header Menu -->
+    <header class="header-menu">
+        <nav class="nav-container">
+            <div class="nav-logo">
+                <img src="assets/images/logo_2.jpeg" alt="MechSwap" class="nav-logo-img">
+            </div>
+            <ul class="nav-links">
+                <li><a href="#categories" class="nav-link">Categories</a></li>
+                <li><a href="#how-it-works" class="nav-link">How it Works</a></li>
+                <li><a href="#contact" class="nav-link">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <!-- Hero Section -->
     <section class="hero">
         <div class="hero-container">
-            <!-- Logo -->
-            <img src="assets/images/logo_2.jpeg" alt="MechSwap Logo" class="hero-logo">
-            
+                        
             <!-- Why MechSwap Description -->
             <p class="hero-description">MechSwap is India's leading marketplace for industrial machinery Buy & Sell. We connect manufacturers, traders, and businesses to buy and sell quality used equipment with confidence and transparency.</p>
             
-            <!-- Feature Highlights -->
-            <div class="feature-highlights">
+            <!-- Feature Stack -->
+            <div class="feature-stack">
                 <div class="feature-item">
-                    <div class="feature-checkmark">✓</div>
-                    <span class="feature-text">No Brokerage</span>
+                    <div class="feature-icon">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Direct Contact</h3>
+                        <p>Zero-brokerage model</p>
+                    </div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-checkmark">✓</div>
-                    <span class="feature-text">No Commission</span>
+                    <div class="feature-icon">
+                        <i class="fas fa-shield-check"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Verified Sellers</h3>
+                        <p>High-trust industrial network</p>
+                    </div>
                 </div>
                 <div class="feature-item">
-                    <div class="feature-checkmark">✓</div>
-                    <span class="feature-text">Verified Equipment</span>
-                </div>
-                <div class="feature-item">
-                    <div class="feature-checkmark">✓</div>
-                    <span class="feature-text">Pan-India</span>
+                    <div class="feature-icon">
+                        <i class="fas fa-video"></i>
+                    </div>
+                    <div class="feature-content">
+                        <h3>Multimodal Listings</h3>
+                        <p>See machine in action via video before you buy</p>
+                    </div>
                 </div>
             </div>
             
@@ -51,6 +78,11 @@
             <div class="hero-buttons">
                 <button class="btn btn-primary">Find Machinery</button>
                 <button class="btn btn-outline">Sell Machinery</button>
+            </div>
+            
+            <!-- Scroll Down Chevron -->
+            <div class="scroll-indicator">
+                <i class="fas fa-chevron-down"></i>
             </div>
         </div>
     </section>
