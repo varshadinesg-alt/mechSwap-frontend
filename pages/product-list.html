@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Products - MechSwap</title>
+    <link rel="stylesheet" href="../css/style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="product-list-container">
+        <div class="filter-section">
+            <h2>Filter Products</h2>
+            
+            <div class="filter-form">
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select id="category" name="category">
+                        <option value="">All Categories</option>
+                        <option value="cnc">CNC Machines</option>
+                        <option value="lathe">Lathe Machines</option>
+                        <option value="press">Press Machines</option>
+                        <option value="welding">Welding Equipment</option>
+                    </select>
+                </div>
+                
+                <div class="form-row">
+                    <div class="form-group">
+                        <label for="state">State</label>
+                        <select id="state" name="state">
+                            <option value="">All States</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="city">City</label>
+                        <select id="city" name="city" disabled>
+                            <option value="">Select City</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <button type="button" class="btn btn-secondary">Apply Filters</button>
+            </div>
+        </div>
+        
+        <div class="products-section">
+            <h2>Available Machinery</h2>
+            
+            <div class="products-grid">
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../assets/images/product-placeholder.jpg" alt="Product">
+                    </div>
+                    <div class="product-info">
+                        <h3>CNC Milling Machine</h3>
+                        <p class="price">Rs. 4,50,000</p>
+                        <p class="location">Bangalore, Karnataka</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../assets/images/product-placeholder.jpg" alt="Product">
+                    </div>
+                    <div class="product-info">
+                        <h3>Lathe Machine</h3>
+                        <p class="price">Rs. 2,75,000</p>
+                        <p class="location">Pune, Maharashtra</p>
+                    </div>
+                </div>
+                
+                <div class="product-card">
+                    <div class="product-image">
+                        <img src="../assets/images/product-placeholder.jpg" alt="Product">
+                    </div>
+                    <div class="product-info">
+                        <h3>Press Machine</h3>
+                        <p class="price">Rs. 8,20,000</p>
+                        <p class="location">Hyderabad, Telangana</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script src="../js/main.js"></script>
+    <script src="../js/locationData.js"></script>
+    <script>
+        // Initialize location dropdowns
+        document.addEventListener('DOMContentLoaded', function() {
+            initLocationDropdowns('state', 'city');
+        });
+    </script>
+</body>
+</html>
