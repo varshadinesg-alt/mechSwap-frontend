@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MechSwap - Sell Machinery</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product-list.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="assets/videos/machinery-bg.mp4" type="video/mp4">
+    </video>
+    
+    <!-- Transparent Navbar -->
+    <header class="navbar-dark" style="background: transparent !important; border-bottom: none !important;">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo_2.jpeg" alt="MechSwap Logo" class="hero-logo">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="product-list.html" class="nav-link">Categories</a></li>
+                    <li><a href="#how-it-works" class="nav-link">How it Works</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">Sign In</a>
+                <a href="#" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Sell Machinery Section -->
+    <section class="sell-machinery">
+        <div class="sell-container">
+            <h1>Sell Your Machinery</h1>
+            <p>List your industrial equipment on MechSwap and reach thousands of potential buyers across India.</p>
+            
+            <form class="sell-form">
+                <div class="form-group">
+                    <label for="machineryName">Machinery Name *</label>
+                    <input type="text" id="machineryName" name="machineryName" required placeholder="e.g., Haas CNC Machine">
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category *</label>
+                    <select id="category" name="category" required>
+                        <option value="">Select Category</option>
+                        <option value="cnc">CNC Machines</option>
+                        <option value="press-brake">Press Brakes</option>
+                        <option value="lathe">Lathes</option>
+                        <option value="milling">Milling Machines</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="price">Price (₹) *</label>
+                    <input type="number" id="price" name="price" required placeholder="e.g., 450000">
+                </div>
+
+                <div class="form-group">
+                    <label for="location">Location *</label>
+                    <select id="location" name="location" required>
+                        <option value="">Select Location</option>
+                        <option value="mumbai">Mumbai</option>
+                        <option value="delhi">Delhi</option>
+                        <option value="bangalore">Bangalore</option>
+                        <option value="chennai">Chennai</option>
+                        <option value="other">Other</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="description">Description *</label>
+                    <textarea id="description" name="description" rows="5" required placeholder="Describe your machinery in detail (condition, age, specifications, etc.)"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="images">Upload Multimodal Media (Photos/Video)</label>
+                    <div class="drag-drop-zone" id="dragDropZone">
+                        <i class="fas fa-video"></i>
+                        <p>Drag & Drop photos or videos here</p>
+                        <p class="drag-drop-hint">or click to browse files</p>
+                        <input type="file" id="media-upload" name="images" multiple accept="image/*,video/*" style="display: none;">
+                    </div>
+                    <div id="file-preview" class="file-preview"></div>
+                    <small>Upload up to 5 images or videos of your machinery</small>
+                </div>
+
+                <div class="form-group checkbox-group">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="verified" id="verified">
+                        <span>I want to apply for Verified Seller status</span>
+                    </label>
+                </div>
+
+                <div class="form-actions">
+                    <button type="submit" class="btn btn-primary">Submit Listing</button>
+                    <button type="reset" class="btn btn-outline">Clear Form</button>
+                </div>
+            </form>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script>
+        // File upload functionality
+        const dragDropZone = document.getElementById('dragDropZone');
+        const mediaUpload = document.getElementById('media-upload');
+        const filePreview = document.getElementById('file-preview');
+
+        // Click-to-browse
+        dragDropZone.addEventListener('click', () => {
+            mediaUpload.click();
+        });
+
+        // Drag & Drop support
+        dragDropZone.addEventListener('dragover', (e) => {
+            e.preventDefault();
+            dragDropZone.style.borderColor = '#1abc9c';
+            dragDropZone.style.background = 'rgba(26, 188, 156, 0.1)';
+        });
+
+        dragDropZone.addEventListener('dragleave', (e) => {
+            e.preventDefault();
+            dragDropZone.style.borderColor = '';
+            dragDropZone.style.background = '';
+        });
+
+        dragDropZone.addEventListener('drop', (e) => {
+            e.preventDefault();
+            dragDropZone.style.borderColor = '';
+            dragDropZone.style.background = '';
+            
+            const files = e.dataTransfer.files;
+            handleFiles(files);
+        });
+
+        // File input change
+        mediaUpload.addEventListener('change', (e) => {
+            const files = e.target.files;
+            handleFiles(files);
+        });
+
+        // Handle file preview
+        function handleFiles(files) {
+            filePreview.innerHTML = '';
+            
+            Array.from(files).forEach(file => {
+                const previewItem = document.createElement('div');
+                previewItem.className = 'preview-item';
+                
+                if (file.type.startsWith('image/')) {
+                    const reader = new FileReader();
+                    reader.onload = (e) => {
+                        previewItem.innerHTML = `
+                            <img src="${e.target.result}" alt="${file.name}">
+                            <span class="file-name">${file.name}</span>
+                        `;
+                    };
+                    reader.readAsDataURL(file);
+                } else if (file.type.startsWith('video/')) {
+                    previewItem.innerHTML = `
+                        <i class="fas fa-video video-icon"></i>
+                        <span class="file-name">${file.name}</span>
+                    `;
+                }
+                
+                filePreview.appendChild(previewItem);
+            });
+        }
+    </script>
+</body>
+</html>

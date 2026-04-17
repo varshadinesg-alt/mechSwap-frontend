@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MechSwap - Product Listings</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product-list.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <!-- Dark-themed Navbar -->
+    <header class="navbar-dark">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <img src="assets/images/logo_2.jpeg" alt="MechSwap Logo" class="hero-logo">
+            </a>
+            <nav>
+                <ul class="nav-menu">
+                    <li><a href="index.html" class="nav-link">Home</a></li>
+                    <li><a href="product-list.html" class="nav-link active">Categories</a></li>
+                    <li><a href="#how-it-works" class="nav-link">How it Works</a></li>
+                    <li><a href="#contact" class="nav-link">Contact</a></li>
+                </ul>
+            </nav>
+            <div class="nav-actions">
+                <a href="#" class="btn btn-outline">Sign In</a>
+                <a href="#" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Product Listings Section -->
+    <section class="product-listings">
+        <div class="listings-container">
+            <!-- Sidebar Filters -->
+            <aside class="sidebar-filters">
+                <h3>Filters</h3>
+                
+                <div class="filter-section active">
+                    <div class="filter-header">
+                        Category
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="filter-content">
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>CNC Machines</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>Press Brakes</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>Lathes</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>Milling Machines</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-header">
+                        Price Range
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="filter-content">
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>Under ₹1 Lakh</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>₹1 Lakh - ₹5 Lakh</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>₹5 Lakh - ₹10 Lakh</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>Above ₹10 Lakh</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="filter-section">
+                    <div class="filter-header">
+                        Location
+                        <i class="fas fa-chevron-down arrow-icon"></i>
+                    </div>
+                    <div class="filter-content">
+                        <div class="filter-options">
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>Mumbai</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>Delhi</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>Bangalore</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>Chennai</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </aside>
+
+            <!-- Main Content Area -->
+            <main class="main-content">
+                <!-- Search Bar -->
+                <div class="search-bar-container">
+                    <div class="search-bar">
+                        <i class="fas fa-search search-icon"></i>
+                        <input type="text" id="searchInput" placeholder="Search machinery by name, category, or location...">
+                    </div>
+                </div>
+
+                <!-- Product Grid -->
+                <div class="product-grid">
+                    <!-- Product Card 1 -->
+                    <div class="product-card" data-title="CNC Machine" data-category="CNC Machines" data-location="Mumbai">
+                        <div class="product-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <span class="verified-badge">
+                                <i class="fas fa-check-circle"></i> Verified
+                            </span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Haas CNC Machine</h3>
+                            <p class="product-category">CNC Machines</p>
+                            <p class="product-price">₹4,50,000</p>
+                            <p class="product-location"><i class="fas fa-map-marker-alt"></i> Mumbai</p>
+                            <button class="btn btn-primary view-details">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 2 -->
+                    <div class="product-card" data-title="Press Brake" data-category="Press Brakes" data-location="Delhi">
+                        <div class="product-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <span class="verified-badge">
+                                <i class="fas fa-check-circle"></i> Verified
+                            </span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Trumpf Press Brake</h3>
+                            <p class="product-category">Press Brakes</p>
+                            <p class="product-price">₹8,20,000</p>
+                            <p class="product-location"><i class="fas fa-map-marker-alt"></i> Delhi</p>
+                            <button class="btn btn-primary view-details">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 3 -->
+                    <div class="product-card" data-title="Lathe Machine" data-category="Lathes" data-location="Bangalore">
+                        <div class="product-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-cog"></i>
+                            </div>
+                            <span class="verified-badge">
+                                <i class="fas fa-check-circle"></i> Verified
+                            </span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Harrison Lathe</h3>
+                            <p class="product-category">Lathes</p>
+                            <p class="product-price">₹2,75,000</p>
+                            <p class="product-location"><i class="fas fa-map-marker-alt"></i> Bangalore</p>
+                            <button class="btn btn-primary view-details">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 4 -->
+                    <div class="product-card" data-title="Milling Machine" data-category="Milling Machines" data-location="Chennai">
+                        <div class="product-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-tools"></i>
+                            </div>
+                            <span class="verified-badge">
+                                <i class="fas fa-check-circle"></i> Verified
+                            </span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Bridgeport Milling</h3>
+                            <p class="product-category">Milling Machines</p>
+                            <p class="product-price">₹3,20,000</p>
+                            <p class="product-location"><i class="fas fa-map-marker-alt"></i> Chennai</p>
+                            <button class="btn btn-primary view-details">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 5 -->
+                    <div class="product-card" data-title="CNC Machine" data-category="CNC Machines" data-location="Delhi">
+                        <div class="product-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-cogs"></i>
+                            </div>
+                            <span class="verified-badge">
+                                <i class="fas fa-check-circle"></i> Verified
+                            </span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Fanuc CNC Machine</h3>
+                            <p class="product-category">CNC Machines</p>
+                            <p class="product-price">₹6,80,000</p>
+                            <p class="product-location"><i class="fas fa-map-marker-alt"></i> Delhi</p>
+                            <button class="btn btn-primary view-details">View Details</button>
+                        </div>
+                    </div>
+
+                    <!-- Product Card 6 -->
+                    <div class="product-card" data-title="Press Brake" data-category="Press Brakes" data-location="Mumbai">
+                        <div class="product-image">
+                            <div class="image-placeholder">
+                                <i class="fas fa-industry"></i>
+                            </div>
+                            <span class="verified-badge">
+                                <i class="fas fa-check-circle"></i> Verified
+                            </span>
+                        </div>
+                        <div class="product-info">
+                            <h3>Amada Press Brake</h3>
+                            <p class="product-category">Press Brakes</p>
+                            <p class="product-price">₹5,50,000</p>
+                            <p class="product-location"><i class="fas fa-map-marker-alt"></i> Mumbai</p>
+                            <button class="btn btn-primary view-details">View Details</button>
+                        </div>
+                    </div>
+                </div>
+            </main>
+        </div>
+    </section>
+
+    <script src="js/main.js"></script>
+    <script>
+        const headers = document.querySelectorAll('.filter-header');
+        headers.forEach(header => {
+            header.addEventListener('click', () => {
+                const currentSection = header.parentElement;
+
+                // Auto-collapse others
+                document.querySelectorAll('.filter-section').forEach(section => {
+                    if (section !== currentSection) {
+                        section.classList.remove('active');
+                    }
+                });
+
+                // Toggle current
+                currentSection.classList.toggle('active');
+            });
+        });
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const productCards = document.querySelectorAll('.product-card');
+        
+        if (searchInput && productCards.length > 0) {
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                
+                productCards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const category = card.getAttribute('data-category').toLowerCase();
+                    const location = card.getAttribute('data-location').toLowerCase();
+                    
+                    const matchesSearch = title.includes(searchTerm) || 
+                                        category.includes(searchTerm) || 
+                                        location.includes(searchTerm);
+                    
+                    if (matchesSearch || searchTerm === '') {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+    </script>
+</body>
+</html>

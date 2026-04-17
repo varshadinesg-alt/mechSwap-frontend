@@ -39,8 +39,85 @@ function initGlobalInteractions() {
   // Add mobile menu functionality if needed
   initMobileMenu();
   
+  // Initialize search functionality for product listings
+  initSearchFunctionality();
+  
+  // Initialize filter toggle functionality
+  initFilterToggle();
+  
+  // Initialize collapsible filter toggle functionality
+  initCollapsibleFilterToggle();
+  
   // Add any other global interactions
   console.log('Global interactions initialized');
+}
+
+// Search simulation functionality
+function initSearchFunctionality() {
+  const searchInput = document.getElementById('searchInput');
+  const productCards = document.querySelectorAll('.product-card');
+  
+  if (searchInput && productCards.length > 0) {
+    searchInput.addEventListener('input', function(e) {
+      const searchTerm = e.target.value.toLowerCase().trim();
+      
+      productCards.forEach(card => {
+        const title = card.getAttribute('data-title').toLowerCase();
+        const category = card.getAttribute('data-category').toLowerCase();
+        const location = card.getAttribute('data-location').toLowerCase();
+        
+        // Check if search term matches title, category, or location
+        const matchesSearch = title.includes(searchTerm) || 
+                            category.includes(searchTerm) || 
+                            location.includes(searchTerm);
+        
+        if (matchesSearch || searchTerm === '') {
+          card.style.display = 'block';
+        } else {
+          card.style.display = 'none';
+        }
+      });
+    });
+  }
+}
+
+// Filter toggle functionality
+function initFilterToggle() {
+  const filterOptions = document.querySelectorAll('.filter-option');
+  
+  filterOptions.forEach(option => {
+    option.addEventListener('click', function() {
+      const checkbox = this.querySelector('input[type="checkbox"]');
+      
+      // Toggle checkbox state
+      checkbox.checked = !checkbox.checked;
+      
+      // Toggle selected class
+      if (checkbox.checked) {
+        this.classList.add('selected');
+      } else {
+        this.classList.remove('selected');
+      }
+    });
+  });
+}
+
+// Collapsible filter toggle function
+function toggleFilter(filterId) {
+  const filterGroup = document.getElementById(filterId);
+  filterGroup.classList.toggle('active');
+}
+
+// Initialize collapsible filter toggle functionality
+function initCollapsibleFilterToggle() {
+  const collapsibleFilters = document.querySelectorAll('.collapsible-filter');
+  
+  collapsibleFilters.forEach(filter => {
+    filter.addEventListener('click', function() {
+      const filterId = this.getAttribute('data-filter-id');
+      toggleFilter(filterId);
+    });
+  });
 }
 
 // Mobile menu placeholder
