@@ -305,6 +305,18 @@
                 });
             });
         }
+
+        // Mobile filter toggle
+        const sidebarFilters = document.querySelector('.sidebar-filters');
+        const filtersHeading = sidebarFilters.querySelector('h3');
+        
+        if (window.innerWidth <= 768) {
+            sidebarFilters.classList.add('collapsed');
+        }
+
+        filtersHeading.addEventListener('click', () => {
+            sidebarFilters.classList.toggle('collapsed');
+        });
     </script>
 </body>
 </html>

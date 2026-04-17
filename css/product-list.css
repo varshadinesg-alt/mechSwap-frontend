@@ -405,6 +405,51 @@ body, html {
   .listings-container {
     flex-direction: column;
   }
+
+  .sidebar-filters {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+
+  .sidebar-filters h3 {
+    cursor: pointer;
+    padding: 12px 16px;
+    background: rgba(15, 23, 42, 0.8);
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 0;
+    padding-bottom: 12px;
+  }
+
+  .sidebar-filters h3::after {
+    content: '▼';
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+  }
+
+  .sidebar-filters.collapsed h3::after {
+    transform: rotate(-90deg);
+  }
+
+  .sidebar-filters.collapsed .filter-section {
+    display: none;
+  }
+
+  .sidebar-filters:not(.collapsed) .filter-section {
+    display: block;
+  }
+
+  .product-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .listings-container {
+    flex-direction: column;
+  }
   
   .sidebar-filters {
     width: 100%;
@@ -559,10 +604,25 @@ color: white !important;
 .form-group input[type="number"]:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-outline: none;
-border-color: #1abc9c !important;
-box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.3);
-background-color: rgba(0, 0, 0, 0.3) !important;
+  outline: none;
+  border-color: #1abc9c !important;
+  box-shadow: 0 0 0 3px rgba(26, 188, 156, 0.3);
+  background-color: rgba(0, 0, 0, 0.3) !important;
+}
+
+/* Form validation styling */
+.sell-form:invalid .form-group input[type="text"]:invalid,
+.sell-form:invalid .form-group input[type="number"]:invalid,
+.sell-form:invalid .form-group select:invalid,
+.sell-form:invalid .form-group textarea:invalid {
+  border-color: #ff4d4d !important;
+}
+
+.sell-form.submitted .form-group input[type="text"]:invalid,
+.sell-form.submitted .form-group input[type="number"]:invalid,
+.sell-form.submitted .form-group select:invalid,
+.sell-form.submitted .form-group textarea:invalid {
+  border-color: #ff4d4d !important;
 }
 
 .form-group input[type="file"] {
@@ -612,8 +672,8 @@ background: rgba(0, 0, 0, 0.3);
 
 .preview-item {
   position: relative;
-  width: 100px;
-  height: 100px;
+  width: 80px;
+  height: 80px;
   border-radius: 8px;
   overflow: hidden;
   background: rgba(0, 0, 0, 0.3);
@@ -631,7 +691,7 @@ background: rgba(0, 0, 0, 0.3);
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  font-size: 2rem;
+  font-size: 1.5rem;
   color: #1abc9c;
 }
 
@@ -642,11 +702,34 @@ background: rgba(0, 0, 0, 0.3);
   right: 0;
   background: rgba(0, 0, 0, 0.7);
   color: white;
-  font-size: 0.7rem;
-  padding: 4px 6px;
+  font-size: 0.6rem;
+  padding: 2px 4px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
+}
+
+.preview-item .remove-btn {
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  width: 20px;
+  height: 20px;
+  background: rgba(255, 77, 77, 0.9);
+  border: none;
+  border-radius: 50%;
+  color: white;
+  font-size: 12px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.preview-item .remove-btn:hover {
+  background: #ff4d4d;
+  transform: scale(1.1);
 }
 
 .form-group small {
@@ -707,6 +790,29 @@ background: rgba(0, 0, 0, 0.3);
   transform: translateY(-2px) !important;
   box-shadow: 0 4px 12px rgba(26, 188, 156, 0.4) !important;
   background: #16a085 !important;
+}
+
+.form-actions .btn-primary.loading {
+  pointer-events: none;
+  opacity: 0.7;
+}
+
+.form-actions .btn-primary.loading::after {
+  content: '';
+  display: inline-block;
+  width: 16px;
+  height: 16px;
+  margin-left: 8px;
+  border: 2px solid transparent;
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .form-actions .btn-outline {

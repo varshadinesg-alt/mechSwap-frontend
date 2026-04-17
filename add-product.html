@@ -114,6 +114,7 @@
         const dragDropZone = document.getElementById('dragDropZone');
         const mediaUpload = document.getElementById('media-upload');
         const filePreview = document.getElementById('file-preview');
+        let selectedFiles = [];
 
         // Click-to-browse
         dragDropZone.addEventListener('click', () => {
@@ -138,23 +139,34 @@
             dragDropZone.style.borderColor = '';
             dragDropZone.style.background = '';
             
-            const files = e.dataTransfer.files;
-            handleFiles(files);
+            const files = Array.from(e.dataTransfer.files);
+            selectedFiles = [...selectedFiles, ...files];
+            handleFiles(selectedFiles);
         });
 
         // File input change
         mediaUpload.addEventListener('change', (e) => {
-            const files = e.target.files;
-            handleFiles(files);
+            const files = Array.from(e.target.files);
+            selectedFiles = [...selectedFiles, ...files];
+            handleFiles(selectedFiles);
         });
 
         // Handle file preview
         function handleFiles(files) {
             filePreview.innerHTML = '';
             
-            Array.from(files).forEach(file => {
+            files.forEach((file, index) => {
                 const previewItem = document.createElement('div');
                 previewItem.className = 'preview-item';
+                
+                const removeBtn = document.createElement('button');
+                removeBtn.className = 'remove-btn';
+                removeBtn.innerHTML = '×';
+                removeBtn.onclick = (e) => {
+                    e.stopPropagation();
+                    selectedFiles.splice(index, 1);
+                    handleFiles(selectedFiles);
+                };
                 
                 if (file.type.startsWith('image/')) {
                     const reader = new FileReader();
@@ -163,6 +175,7 @@
                             <img src="${e.target.result}" alt="${file.name}">
                             <span class="file-name">${file.name}</span>
                         `;
+                        previewItem.appendChild(removeBtn);
                     };
                     reader.readAsDataURL(file);
                 } else if (file.type.startsWith('video/')) {
@@ -170,11 +183,41 @@
                         <i class="fas fa-video video-icon"></i>
                         <span class="file-name">${file.name}</span>
                     `;
+                    previewItem.appendChild(removeBtn);
                 }
                 
                 filePreview.appendChild(previewItem);
             });
         }
+
+        // Form validation and submit animation
+        const form = document.querySelector('.sell-form');
+        const submitBtn = form.querySelector('.btn-primary');
+
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            
+            // Add submitted class for validation styling
+            form.classList.add('submitted');
+            
+            // Check if form is valid
+            if (form.checkValidity()) {
+                // Show loading animation
+                submitBtn.classList.add('loading');
+                submitBtn.textContent = 'Processing...';
+                
+                // Simulate form submission
+                setTimeout(() => {
+                    submitBtn.classList.remove('loading');
+                    submitBtn.textContent = 'Submit Listing';
+                    alert('Listing submitted successfully!');
+                    form.reset();
+                    selectedFiles = [];
+                    filePreview.innerHTML = '';
+                    form.classList.remove('submitted');
+                }, 2000);
+            }
+        });
     </script>
 </body>
 </html>
