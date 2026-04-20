@@ -24,8 +24,8 @@
                 </ul>
             </nav>
             <div class="nav-actions">
-                <a href="#" class="btn btn-outline">Sign In</a>
-                <a href="#" class="btn btn-primary">Get Started</a>
+                <a href="login.html" class="btn btn-outline" id="signin-btn">Sign In</a>
+                <a href="signup.html" class="btn btn-primary">Get Started</a>
             </div>
         </div>
     </header>
@@ -261,8 +261,80 @@
         </div>
     </section>
 
+    <script src="js/mockData.js"></script>
     <script src="js/main.js"></script>
     <script>
+        // Dynamically render product cards from mockData.js
+        const productGrid = document.querySelector('.product-grid');
+        
+        if (productGrid && typeof mockMachines !== 'undefined') {
+            productGrid.innerHTML = '';
+            
+            mockMachines.forEach(machine => {
+                const card = document.createElement('div');
+                card.className = 'product-card';
+                card.setAttribute('data-title', machine.name.toLowerCase());
+                card.setAttribute('data-category', machine.category.toLowerCase());
+                card.setAttribute('data-location', machine.location.toLowerCase());
+                
+                card.innerHTML = `
+                    <div class="product-image">
+                        <img src="${machine.image}" alt="${machine.name}" class="product-img">
+                        <span class="verified-badge">
+                            <i class="fas fa-check-circle"></i> Verified
+                        </span>
+                    </div>
+                    <div class="product-info">
+                        <h3>${machine.name}</h3>
+                        <p class="product-category">${machine.category}</p>
+                        <p class="product-price">₹${machine.price.toLocaleString()}</p>
+                        <p class="product-location"><i class="fas fa-map-marker-alt"></i> ${machine.location}</p>
+                        <button class="btn btn-primary view-details" onclick="alert('View details for ${machine.name}')">View Details</button>
+                    </div>
+                `;
+                
+                productGrid.appendChild(card);
+            });
+        }
+        
+        // Update search functionality to work with dynamic cards
+        const searchInput = document.getElementById('searchInput');
+        
+        if (searchInput && productGrid) {
+            searchInput.addEventListener('input', function(e) {
+                const searchTerm = e.target.value.toLowerCase().trim();
+                const productCards = document.querySelectorAll('.product-card');
+                
+                productCards.forEach(card => {
+                    const title = card.getAttribute('data-title').toLowerCase();
+                    const category = card.getAttribute('data-category').toLowerCase();
+                    const location = card.getAttribute('data-location').toLowerCase();
+                    
+                    const matchesSearch = title.includes(searchTerm) || 
+                                        category.includes(searchTerm) || 
+                                        location.includes(searchTerm);
+                    
+                    if (matchesSearch || searchTerm === '') {
+                        card.style.display = 'block';
+                    } else {
+                        card.style.display = 'none';
+                    }
+                });
+            });
+        }
+        
+        // Mobile filter toggle
+        const sidebarFilters = document.querySelector('.sidebar-filters');
+        const filtersHeading = sidebarFilters.querySelector('h3');
+        
+        if (window.innerWidth <= 768) {
+            sidebarFilters.classList.add('collapsed');
+        }
+
+        filtersHeading.addEventListener('click', () => {
+            sidebarFilters.classList.toggle('collapsed');
+        });
+    </script>
         const headers = document.querySelectorAll('.filter-header');
         headers.forEach(header => {
             header.addEventListener('click', () => {
@@ -317,6 +389,31 @@
         filtersHeading.addEventListener('click', () => {
             sidebarFilters.classList.toggle('collapsed');
         });
+
+        // LocalStorage state simulation for Sign In/Dashboard toggle
+        const signinBtn = document.getElementById('signin-btn');
+        
+        if (signinBtn) {
+            const isLoggedIn = localStorage.getItem('isLoggedIn');
+            
+            if (isLoggedIn === 'true') {
+                signinBtn.textContent = 'Dashboard';
+                signinBtn.href = 'seller-dashboard.html';
+            }
+            
+            // Update on login
+            window.addEventListener('storage', (e) => {
+                if (e.key === 'isLoggedIn') {
+                    if (e.newValue === 'true') {
+                        signinBtn.textContent = 'Dashboard';
+                        signinBtn.href = 'seller-dashboard.html';
+                    } else {
+                        signinBtn.textContent = 'Sign In';
+                        signinBtn.href = 'login.html';
+                    }
+                }
+            });
+        }
     </script>
 </body>
 </html>

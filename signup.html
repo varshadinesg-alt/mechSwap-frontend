@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up - MechSwap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/auth.css">
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="assets/videos/machinery-bg.mp4" type="video/mp4">
+    </video>
+
+    <!-- Video Overlay -->
+    <div class="video-overlay"></div>
+
+    <div class="auth-container">
+        <div class="auth-card">
+            <div class="auth-header">
+                <img src="assets/images/logo_2.jpeg" alt="MechSwap Logo" class="auth-logo">
+                <h1>Create Account</h1>
+                <p>Join India's leading industrial machinery marketplace</p>
+            </div>
+
+            <form class="auth-form" id="signup-form">
+                <div class="form-group">
+                    <label for="name">Full Name</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-user"></i>
+                        <input type="text" id="name" name="name" required placeholder="Enter your full name">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-envelope"></i>
+                        <input type="email" id="email" name="email" required placeholder="Enter your email">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="phone">Phone Number</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-phone"></i>
+                        <input type="tel" id="phone" name="phone" required placeholder="Enter your phone number">
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="company">Company Name</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-building"></i>
+                        <input type="text" id="company" name="company" required placeholder="Enter your company name">
+                    </div>
+                </div>
+
+                <!-- Hierarchical State/City Dropdowns -->
+                <div class="form-group">
+                    <label for="state">State</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-map-marker-alt"></i>
+                        <select id="state" name="state" required>
+                            <option value="">Select State</option>
+                            <option value="maharashtra">Maharashtra</option>
+                            <option value="delhi">Delhi</option>
+                            <option value="karnataka">Karnataka</option>
+                            <option value="tamil-nadu">Tamil Nadu</option>
+                            <option value="gujarat">Gujarat</option>
+                            <option value="rajasthan">Rajasthan</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="city">City</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-city"></i>
+                        <select id="city" name="city" required disabled>
+                            <option value="">Select State First</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- Multi-select Chip Interface for Industrial Interests -->
+                <div class="form-group">
+                    <label>Industrial Interests</label>
+                    <div class="chips-container" id="chips-container">
+                        <div class="chip" data-value="cnc-machines">
+                            <i class="fas fa-cog"></i>
+                            <span>CNC Machines</span>
+                        </div>
+                        <div class="chip" data-value="press-brakes">
+                            <i class="fas fa-compress-alt"></i>
+                            <span>Press Brakes</span>
+                        </div>
+                        <div class="chip" data-value="lathes">
+                            <i class="fas fa-sync-alt"></i>
+                            <span>Lathes</span>
+                        </div>
+                        <div class="chip" data-value="milling-machines">
+                            <i class="fas fa-cogs"></i>
+                            <span>Milling Machines</span>
+                        </div>
+                        <div class="chip" data-value="welding-equipment">
+                            <i class="fas fa-fire"></i>
+                            <span>Welding Equipment</span>
+                        </div>
+                        <div class="chip" data-value="material-handling">
+                            <i class="fas fa-truck-loading"></i>
+                            <span>Material Handling</span>
+                        </div>
+                        <div class="chip" data-value="fabrication">
+                            <i class="fas fa-tools"></i>
+                            <span>Fabrication</span>
+                        </div>
+                        <div class="chip" data-value="automation">
+                            <i class="fas fa-robot"></i>
+                            <span>Automation</span>
+                        </div>
+                    </div>
+                    <input type="hidden" id="interests" name="interests">
+                </div>
+
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="password" name="password" required placeholder="Create a password">
+                        <button type="button" class="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="confirm-password">Confirm Password</label>
+                    <div class="input-wrapper">
+                        <i class="fas fa-lock"></i>
+                        <input type="password" id="confirm-password" name="confirm-password" required placeholder="Confirm your password">
+                        <button type="button" class="toggle-password">
+                            <i class="fas fa-eye"></i>
+                        </button>
+                    </div>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox-label">
+                        <input type="checkbox" name="terms" required>
+                        <span>I agree to the <a href="#" class="auth-link">Terms of Service</a> and <a href="#" class="auth-link">Privacy Policy</a></span>
+                    </label>
+                </div>
+
+                <button type="submit" class="btn-primary">Create Account</button>
+            </form>
+
+            <div class="auth-footer">
+                <p>Already have an account? <a href="login.html" class="auth-link">Login</a></p>
+                <p><a href="index.html" class="auth-link">← Back to Home</a></p>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/auth.js"></script>
+</body>
+</html>

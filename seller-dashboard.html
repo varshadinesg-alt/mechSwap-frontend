@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seller Dashboard - MechSwap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/seller-dashboard.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline id="bg-video">
+        <source src="assets/videos/machinery-bg.mp4" type="video/mp4">
+    </video>
+
+    <!-- Video Overlay -->
+    <div class="video-overlay"></div>
+
+    <div class="dashboard-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="user-profile">
+                    <div class="profile-picture">
+                        <i class="fas fa-user"></i>
+                    </div>
+                    <div class="user-info">
+                        <h3>John Doe</h3>
+                        <span class="seller-badge">Verified Seller</span>
+                    </div>
+                </div>
+            </div>
+            
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active" data-view="overview">
+                        <i class="fas fa-chart-line"></i>
+                        <span>Overview</span>
+                    </li>
+                    <li class="nav-item" data-view="my-machinery">
+                        <i class="fas fa-industry"></i>
+                        <span>My Machinery</span>
+                    </li>
+                    <li class="nav-item" data-view="add-new">
+                        <i class="fas fa-plus-circle"></i>
+                        <span>Add New</span>
+                    </li>
+                    <li class="nav-item" data-view="profile">
+                        <i class="fas fa-user-cog"></i>
+                        <span>Profile</span>
+                    </li>
+                    <li class="nav-item" data-view="security">
+                        <i class="fas fa-shield-alt"></i>
+                        <span>Security</span>
+                    </li>
+                    <li class="nav-item logout">
+                        <i class="fas fa-sign-out-alt"></i>
+                        <span>Logout</span>
+                    </li>
+                </ul>
+            </nav>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Overview View -->
+            <div class="content-view active" id="overview">
+                <h1>Dashboard Overview</h1>
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <i class="fas fa-box"></i>
+                        <div class="stat-info">
+                            <h3>Total Listings</h3>
+                            <p>24</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-eye"></i>
+                        <div class="stat-info">
+                            <h3>Total Views</h3>
+                            <p>1,234</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-handshake"></i>
+                        <div class="stat-info">
+                            <h3>Sold Items</h3>
+                            <p>12</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-rupee-sign"></i>
+                        <div class="stat-info">
+                            <h3>Total Revenue</h3>
+                            <p>₹45,67,890</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- My Machinery View -->
+            <div class="content-view" id="my-machinery">
+                <h1>My Machinery</h1>
+                <div class="machinery-table-container">
+                    <table class="machinery-table">
+                        <thead>
+                            <tr>
+                                <th>Machinery Name</th>
+                                <th>Category</th>
+                                <th>Price</th>
+                                <th>Status</th>
+                                <th>Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody id="machinery-table-body">
+                            <tr data-id="1">
+                                <td>Haas CNC Machine</td>
+                                <td>CNC Machines</td>
+                                <td>₹4,50,000</td>
+                                <td><span class="status active">Active</span></td>
+                                <td>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i> Edit</button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i> Delete</button>
+                                </td>
+                            </tr>
+                            <tr data-id="2">
+                                <td>Trumpf Press Brake</td>
+                                <td>Press Brakes</td>
+                                <td>₹8,20,000</td>
+                                <td><span class="status active">Active</span></td>
+                                <td>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i> Edit</button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i> Delete</button>
+                                </td>
+                            </tr>
+                            <tr data-id="3">
+                                <td>Harrison Lathe</td>
+                                <td>Lathes</td>
+                                <td>₹2,75,000</td>
+                                <td><span class="status sold">Sold</span></td>
+                                <td>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i> Edit</button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i> Delete</button>
+                                </td>
+                            </tr>
+                            <tr data-id="4">
+                                <td>Bridgeport Milling</td>
+                                <td>Milling Machines</td>
+                                <td>₹3,20,000</td>
+                                <td><span class="status active">Active</span></td>
+                                <td>
+                                    <button class="btn-edit"><i class="fas fa-edit"></i> Edit</button>
+                                    <button class="btn-delete"><i class="fas fa-trash"></i> Delete</button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Add New View -->
+            <div class="content-view" id="add-new">
+                <h1>Add New Machinery</h1>
+                <form class="add-machinery-form" id="add-machinery-form">
+                    <div class="form-group">
+                        <label for="machinery-name">Machinery Name *</label>
+                        <input type="text" id="machinery-name" name="machinery-name" required placeholder="e.g., Haas CNC Machine">
+                    </div>
+                    <div class="form-group">
+                        <label for="category">Category *</label>
+                        <select id="category" name="category" required>
+                            <option value="">Select Category</option>
+                            <option value="CNC Machines">CNC Machines</option>
+                            <option value="Press Brakes">Press Brakes</option>
+                            <option value="Lathes">Lathes</option>
+                            <option value="Milling Machines">Milling Machines</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="price">Price (₹) *</label>
+                        <input type="number" id="price" name="price" required placeholder="e.g., 450000">
+                    </div>
+                    <div class="form-group">
+                        <label for="location">Location *</label>
+                        <select id="location" name="location" required>
+                            <option value="">Select Location</option>
+                            <option value="Mumbai">Mumbai</option>
+                            <option value="Delhi">Delhi</option>
+                            <option value="Bangalore">Bangalore</option>
+                            <option value="Chennai">Chennai</option>
+                            <option value="Other">Other</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Description *</label>
+                        <textarea id="description" name="description" rows="4" required placeholder="Describe your machinery in detail (condition, age, specifications, etc.)"></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="images">Upload Images/Video</label>
+                        <div class="drag-drop-zone" id="dragDropZone">
+                            <i class="fas fa-video"></i>
+                            <p>Drag & Drop photos or videos here</p>
+                            <p class="drag-drop-hint">or click to browse files</p>
+                            <input type="file" id="media-upload" name="images" multiple accept="image/*,video/*" style="display: none;">
+                        </div>
+                        <div id="file-preview" class="file-preview"></div>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Add Machinery</button>
+                        <button type="reset" class="btn-secondary">Clear Form</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Profile View -->
+            <div class="content-view" id="profile">
+                <h1>Profile Settings</h1>
+                <form class="profile-form" id="profile-form">
+                    <div class="form-group">
+                        <label for="company-name">Company Name</label>
+                        <input type="text" id="company-name" name="company-name" placeholder="Enter company name">
+                    </div>
+                    <div class="form-group">
+                        <label for="gst-number">GST Number</label>
+                        <input type="text" id="gst-number" name="gst-number" placeholder="Enter GST number">
+                    </div>
+                    <div class="form-group">
+                        <label for="factory-address">Factory Address</label>
+                        <textarea id="factory-address" name="factory-address" rows="4" placeholder="Enter factory address"></textarea>
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Save Profile</button>
+                    </div>
+                </form>
+            </div>
+
+            <!-- Security View -->
+            <div class="content-view" id="security">
+                <h1>Security Settings</h1>
+                <form class="security-form" id="security-form">
+                    <div class="form-group">
+                        <label for="current-password">Current Password</label>
+                        <input type="password" id="current-password" name="current-password" placeholder="Enter current password">
+                    </div>
+                    <div class="form-group">
+                        <label for="new-password">New Password</label>
+                        <input type="password" id="new-password" name="new-password" placeholder="Enter new password">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirm-password">Confirm Password</label>
+                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm new password">
+                    </div>
+                    <div class="form-actions">
+                        <button type="submit" class="btn-primary">Change Password</button>
+                    </div>
+                </form>
+            </div>
+        </main>
+    </div>
+
+    <script src="js/mockData.js"></script>
+    <script src="js/seller-dashboard.js"></script>
+    <script>
+        // Populate My Machinery table with user machinery from mockData.js
+        const machineryTableBody = document.getElementById('machinery-table-body');
+        
+        if (machineryTableBody && typeof userMachinery !== 'undefined') {
+            machineryTableBody.innerHTML = '';
+            
+            userMachinery.forEach(machine => {
+                const row = document.createElement('tr');
+                row.setAttribute('data-id', machine.id);
+                row.innerHTML = `
+                    <td>${machine.name}</td>
+                    <td>${machine.category}</td>
+                    <td>₹${machine.price.toLocaleString()}</td>
+                    <td><span class="status ${machine.status.toLowerCase()}">${machine.status}</span></td>
+                    <td>
+                        <button class="btn-edit"><i class="fas fa-edit"></i> Edit</button>
+                        <button class="btn-delete"><i class="fas fa-trash"></i> Delete</button>
+                    </td>
+                `;
+                
+                machineryTableBody.appendChild(row);
+            });
+        }
+    </script>
+    <script>
+        // Ensure video loops properly
+        const bgVideo = document.getElementById('bg-video');
+        if (bgVideo) {
+            bgVideo.loop = true;
+            bgVideo.play().catch(error => {
+                console.log('Video autoplay was prevented:', error);
+                // Try to play on first user interaction
+                document.addEventListener('click', () => {
+                    bgVideo.play();
+                }, { once: true });
+            });
+        }
+    </script>
+</body>
+</html>
