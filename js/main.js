@@ -4,19 +4,11 @@
 async function loadLayout() {
   const navbarPlaceholder = document.getElementById('navbar-placeholder');
 
-  console.log('Loading layout...');
 
   if (navbarPlaceholder) {
-    try {
-      const navbarResponse = await fetch('navbar.html');
-      const navbarHtml = await navbarResponse.text();
-      navbarPlaceholder.innerHTML = navbarHtml;
-      console.log('Navbar loaded successfully');
-    } catch (error) {
-      console.error('Error loading navbar:', error);
-    }
-  } else {
-    console.error('Navbar placeholder not found');
+    const navbarResponse = await fetch('navbar.html');
+    const navbarHtml = await navbarResponse.text();
+    navbarPlaceholder.innerHTML = navbarHtml;
   }
 
   // Show user profile if logged in
@@ -53,7 +45,6 @@ function showUserProfile() {
 
 // DOM Content Loaded Handler
 document.addEventListener('DOMContentLoaded', async function() {
-  console.log('MechSwap - Main.js loaded');
   
   // Load navbar from partial file
   await loadLayout();
@@ -91,7 +82,6 @@ function initGlobalInteractions() {
   initCollapsibleFilterToggle();
   
   // Add any other global interactions
-  console.log('Global interactions initialized');
 }
 
 // Search simulation functionality

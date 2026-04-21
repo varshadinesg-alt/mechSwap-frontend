@@ -95,10 +95,8 @@ if (loginForm) {
     e.preventDefault();
     
     const email = document.getElementById('email').value;
-    const password = document.getElementById('password').value;
     
     // Simulate login (in production, this would be an API call)
-    console.log('Login attempt:', { email, password });
     
     // Set localStorage for logged in state
     localStorage.setItem('isLoggedIn', 'true');
@@ -139,7 +137,6 @@ if (signupForm) {
     }
     
     // Simulate signup (in production, this would be an API call)
-    console.log('Signup attempt:', formData);
     
     // Set localStorage for logged in state
     localStorage.setItem('isLoggedIn', 'true');
@@ -154,11 +151,9 @@ if (signupForm) {
 document.querySelectorAll('.social-btn').forEach(button => {
   button.addEventListener('click', () => {
     const provider = button.classList.contains('google') ? 'Google' : 'Facebook';
-    console.log(`${provider} login clicked`);
     // In production, this would redirect to OAuth flow
     alert(`${provider} login - Coming soon!`);
   });
 });
 
 // Initialize auth page
-console.log('Auth page initialized');

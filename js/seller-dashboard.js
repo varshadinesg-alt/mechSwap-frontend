@@ -307,7 +307,6 @@ function addMachineryRow(data) {
 }
 
 // Initialize dashboard
-console.log('Seller Dashboard initialized');
 
 // Revenue Chart
 function initRevenueChart() {
