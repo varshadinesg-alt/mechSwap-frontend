@@ -102,6 +102,7 @@ if (loginForm) {
     
     // Set localStorage for logged in state
     localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('user', JSON.stringify({ email }));
     
     // Redirect to seller dashboard
     window.location.href = 'seller-dashboard.html';
@@ -142,6 +143,7 @@ if (signupForm) {
     
     // Set localStorage for logged in state
     localStorage.setItem('isLoggedIn', 'true');
+    localStorage.setItem('user', JSON.stringify({ email: formData.email }));
     
     // Redirect to seller dashboard
     window.location.href = 'seller-dashboard.html';

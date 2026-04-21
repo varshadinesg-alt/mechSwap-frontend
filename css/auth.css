@@ -86,7 +86,7 @@ body, html {
 }
 
 .auth-card {
-  background: rgba(26, 62, 80, 0.95);
+  background: rgba(26, 62, 80, 0.9);
   backdrop-filter: blur(10px);
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: var(--radius-xl);
@@ -194,19 +194,19 @@ body, html {
 
 .toggle-password {
   position: absolute;
-  right: var(--spacing-md);
+  right: 16px;
   top: 50%;
   transform: translateY(-50%);
   background: none;
   border: none;
-  color: rgba(255, 255, 255, 0.6);
+  color: #1abc9c;
   cursor: pointer;
-  font-size: var(--font-md);
+  font-size: var(--font-lg);
   transition: color var(--transition-normal);
 }
 
 .toggle-password:hover {
-  color: var(--primary-teal);
+  color: #5eead4;
 }
 
 /* Form Options */

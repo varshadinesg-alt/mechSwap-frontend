@@ -9,26 +9,8 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
-    <!-- Dark-themed Navbar -->
-    <header class="navbar-dark">
-        <div class="nav-container">
-            <a href="index.html" class="logo">
-                <img src="assets/images/logo_2.jpeg" alt="MechSwap Logo" class="hero-logo">
-            </a>
-            <nav>
-                <ul class="nav-menu">
-                    <li><a href="index.html" class="nav-link">Home</a></li>
-                    <li><a href="product-list.html" class="nav-link active">Categories</a></li>
-                    <li><a href="#how-it-works" class="nav-link">How it Works</a></li>
-                    <li><a href="#contact" class="nav-link">Contact</a></li>
-                </ul>
-            </nav>
-            <div class="nav-actions">
-                <a href="login.html" class="btn btn-outline" id="signin-btn">Sign In</a>
-                <a href="signup.html" class="btn btn-primary">Get Started</a>
-            </div>
-        </div>
-    </header>
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
 
     <!-- Product Listings Section -->
     <section class="product-listings">
@@ -75,26 +57,10 @@
                     </div>
                     <div class="filter-content">
                         <div class="filter-options">
-                            <label class="filter-option">
-                                <input type="checkbox" class="filter-checkbox">
-                                <span>Under ₹1 Lakh</span>
-                                <i class="fas fa-check checkmark"></i>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" class="filter-checkbox">
-                                <span>₹1 Lakh - ₹5 Lakh</span>
-                                <i class="fas fa-check checkmark"></i>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" class="filter-checkbox">
-                                <span>₹5 Lakh - ₹10 Lakh</span>
-                                <i class="fas fa-check checkmark"></i>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" class="filter-checkbox">
-                                <span>Above ₹10 Lakh</span>
-                                <i class="fas fa-check checkmark"></i>
-                            </label>
+                            <div class="price-inputs">
+                                <input type="number" id="min-price" placeholder="Min Price" class="price-input">
+                                <input type="number" id="max-price" placeholder="Max Price" class="price-input">
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -113,17 +79,17 @@
                             </label>
                             <label class="filter-option">
                                 <input type="checkbox" class="filter-checkbox">
-                                <span>Delhi</span>
-                                <i class="fas fa-check checkmark"></i>
-                            </label>
-                            <label class="filter-option">
-                                <input type="checkbox" class="filter-checkbox">
                                 <span>Bangalore</span>
                                 <i class="fas fa-check checkmark"></i>
                             </label>
                             <label class="filter-option">
                                 <input type="checkbox" class="filter-checkbox">
-                                <span>Chennai</span>
+                                <span>Delhi</span>
+                                <i class="fas fa-check checkmark"></i>
+                            </label>
+                            <label class="filter-option">
+                                <input type="checkbox" class="filter-checkbox">
+                                <span>Pune</span>
                                 <i class="fas fa-check checkmark"></i>
                             </label>
                         </div>
@@ -137,14 +103,14 @@
                 <div class="search-bar-container">
                     <div class="search-bar">
                         <i class="fas fa-search search-icon"></i>
-                        <input type="text" id="searchInput" placeholder="Search machinery by name, category, or location...">
+                        <input type="text" id="searchInput" placeholder="Search machinery by name, category, or location..." style="color: white;">
                     </div>
                 </div>
 
                 <!-- Product Grid -->
                 <div class="product-grid">
                     <!-- Product Card 1 -->
-                    <div class="product-card" data-title="CNC Machine" data-category="CNC Machines" data-location="Mumbai">
+                    <a href="product-detail.html?id=1" class="product-card" data-title="CNC Machine" data-category="CNC Machines" data-location="Mumbai" data-capacity="315 KVA" data-years-use="10">
                         <div class="product-image">
                             <div class="image-placeholder">
                                 <i class="fas fa-cogs"></i>
@@ -160,10 +126,10 @@
                             <p class="product-location"><i class="fas fa-map-marker-alt"></i> Mumbai</p>
                             <button class="btn btn-primary view-details">View Details</button>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Product Card 2 -->
-                    <div class="product-card" data-title="Press Brake" data-category="Press Brakes" data-location="Delhi">
+                    <a href="product-detail.html?id=2" class="product-card" data-title="Press Brake" data-category="Press Brakes" data-location="Delhi" data-capacity="250 KVA" data-years-use="8">
                         <div class="product-image">
                             <div class="image-placeholder">
                                 <i class="fas fa-industry"></i>
@@ -179,10 +145,10 @@
                             <p class="product-location"><i class="fas fa-map-marker-alt"></i> Delhi</p>
                             <button class="btn btn-primary view-details">View Details</button>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Product Card 3 -->
-                    <div class="product-card" data-title="Lathe Machine" data-category="Lathes" data-location="Bangalore">
+                    <a href="product-detail.html?id=3" class="product-card" data-title="Lathe Machine" data-category="Lathes" data-location="Bangalore" data-capacity="180 KVA" data-years-use="6">
                         <div class="product-image">
                             <div class="image-placeholder">
                                 <i class="fas fa-cog"></i>
@@ -198,10 +164,10 @@
                             <p class="product-location"><i class="fas fa-map-marker-alt"></i> Bangalore</p>
                             <button class="btn btn-primary view-details">View Details</button>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Product Card 4 -->
-                    <div class="product-card" data-title="Milling Machine" data-category="Milling Machines" data-location="Chennai">
+                    <a href="product-detail.html?id=4" class="product-card" data-title="Milling Machine" data-category="Milling Machines" data-location="Chennai" data-capacity="200 KVA" data-years-use="7">
                         <div class="product-image">
                             <div class="image-placeholder">
                                 <i class="fas fa-tools"></i>
@@ -217,10 +183,10 @@
                             <p class="product-location"><i class="fas fa-map-marker-alt"></i> Chennai</p>
                             <button class="btn btn-primary view-details">View Details</button>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Product Card 5 -->
-                    <div class="product-card" data-title="CNC Machine" data-category="CNC Machines" data-location="Delhi">
+                    <a href="product-detail.html?id=5" class="product-card" data-title="CNC Machine" data-category="CNC Machines" data-location="Delhi" data-capacity="400 KVA" data-years-use="3">
                         <div class="product-image">
                             <div class="image-placeholder">
                                 <i class="fas fa-cogs"></i>
@@ -230,16 +196,16 @@
                             </span>
                         </div>
                         <div class="product-info">
-                            <h3>Fanuc CNC Machine</h3>
+                            <h3>Mazak CNC Machine</h3>
                             <p class="product-category">CNC Machines</p>
-                            <p class="product-price">₹6,80,000</p>
+                            <p class="product-price">₹8,20,000</p>
                             <p class="product-location"><i class="fas fa-map-marker-alt"></i> Delhi</p>
                             <button class="btn btn-primary view-details">View Details</button>
                         </div>
-                    </div>
+                    </a>
 
                     <!-- Product Card 6 -->
-                    <div class="product-card" data-title="Press Brake" data-category="Press Brakes" data-location="Mumbai">
+                    <a href="product-detail.html?id=6" class="product-card" data-title="Press Brake" data-category="Press Brakes" data-location="Mumbai" data-capacity="300 KVA" data-years-use="4">
                         <div class="product-image">
                             <div class="image-placeholder">
                                 <i class="fas fa-industry"></i>
@@ -255,7 +221,7 @@
                             <p class="product-location"><i class="fas fa-map-marker-alt"></i> Mumbai</p>
                             <button class="btn btn-primary view-details">View Details</button>
                         </div>
-                    </div>
+                    </a>
                 </div>
             </main>
         </div>
@@ -279,7 +245,7 @@
                 
                 card.innerHTML = `
                     <div class="product-image">
-                        <img src="${machine.image}" alt="${machine.name}" class="product-img">
+                        <img src="${machine.image}" alt="${machine.name}" class="product-img" loading="lazy">
                         <span class="verified-badge">
                             <i class="fas fa-check-circle"></i> Verified
                         </span>
@@ -289,7 +255,7 @@
                         <p class="product-category">${machine.category}</p>
                         <p class="product-price">₹${machine.price.toLocaleString()}</p>
                         <p class="product-location"><i class="fas fa-map-marker-alt"></i> ${machine.location}</p>
-                        <button class="btn btn-primary view-details" onclick="alert('View details for ${machine.name}')">View Details</button>
+                        <button class="btn btn-primary view-details" onclick="window.open('https://wa.me/919914865830?text=I\\'m interested in your ${machine.name}', '_blank')">Chat on WhatsApp</button>
                     </div>
                 `;
                 
@@ -320,7 +286,78 @@
                         card.style.display = 'none';
                     }
                 });
+
+                // Check for empty state
+                const visibleCards = Array.from(productCards).filter(card => card.style.display !== 'none');
+                if (visibleCards.length === 0) {
+                    showEmptyState();
+                } else {
+                    hideEmptyState();
+                }
             });
+        }
+
+        // Category filter functionality
+        const filterCheckboxes = document.querySelectorAll('.filter-checkbox');
+        
+        filterCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', function() {
+                const filterOption = this.closest('.filter-option');
+                filterOption.classList.toggle('selected', this.checked);
+                
+                // Get selected categories
+                const selectedCategories = Array.from(document.querySelectorAll('.filter-checkbox:checked'))
+                    .map(cb => cb.closest('.filter-option').querySelector('span').textContent.toLowerCase());
+                
+                // Filter cards
+                const productCards = document.querySelectorAll('.product-card');
+                
+                if (selectedCategories.length === 0) {
+                    productCards.forEach(card => card.style.display = 'block');
+                } else {
+                    productCards.forEach(card => {
+                        const cardCategory = card.getAttribute('data-category').toLowerCase();
+                        if (selectedCategories.includes(cardCategory)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    });
+                }
+
+                // Check for empty state
+                const visibleCards = Array.from(productCards).filter(card => card.style.display !== 'none');
+                if (visibleCards.length === 0) {
+                    showEmptyState();
+                } else {
+                    hideEmptyState();
+                }
+            });
+        });
+
+        // Empty state functions
+        function showEmptyState() {
+            let emptyState = document.querySelector('.empty-state');
+            if (!emptyState) {
+                emptyState = document.createElement('div');
+                emptyState.className = 'empty-state';
+                emptyState.innerHTML = `
+                    <div class="empty-state-content">
+                        <i class="fas fa-search"></i>
+                        <h3>No machines found matching your criteria</h3>
+                        <p>Try adjusting your filters or search terms</p>
+                    </div>
+                `;
+                productGrid.parentNode.appendChild(emptyState);
+            }
+            emptyState.style.display = 'block';
+        }
+
+        function hideEmptyState() {
+            const emptyState = document.querySelector('.empty-state');
+            if (emptyState) {
+                emptyState.style.display = 'none';
+            }
         }
         
         // Mobile filter toggle
@@ -334,7 +371,8 @@
         filtersHeading.addEventListener('click', () => {
             sidebarFilters.classList.toggle('collapsed');
         });
-    </script>
+
+        // Filter header toggle functionality
         const headers = document.querySelectorAll('.filter-header');
         headers.forEach(header => {
             header.addEventListener('click', () => {
@@ -351,69 +389,7 @@
                 currentSection.classList.toggle('active');
             });
         });
-
-        // Search functionality
-        const searchInput = document.getElementById('searchInput');
-        const productCards = document.querySelectorAll('.product-card');
-        
-        if (searchInput && productCards.length > 0) {
-            searchInput.addEventListener('input', function(e) {
-                const searchTerm = e.target.value.toLowerCase().trim();
-                
-                productCards.forEach(card => {
-                    const title = card.getAttribute('data-title').toLowerCase();
-                    const category = card.getAttribute('data-category').toLowerCase();
-                    const location = card.getAttribute('data-location').toLowerCase();
-                    
-                    const matchesSearch = title.includes(searchTerm) || 
-                                        category.includes(searchTerm) || 
-                                        location.includes(searchTerm);
-                    
-                    if (matchesSearch || searchTerm === '') {
-                        card.style.display = 'block';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        }
-
-        // Mobile filter toggle
-        const sidebarFilters = document.querySelector('.sidebar-filters');
-        const filtersHeading = sidebarFilters.querySelector('h3');
-        
-        if (window.innerWidth <= 768) {
-            sidebarFilters.classList.add('collapsed');
-        }
-
-        filtersHeading.addEventListener('click', () => {
-            sidebarFilters.classList.toggle('collapsed');
-        });
-
-        // LocalStorage state simulation for Sign In/Dashboard toggle
-        const signinBtn = document.getElementById('signin-btn');
-        
-        if (signinBtn) {
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
-            
-            if (isLoggedIn === 'true') {
-                signinBtn.textContent = 'Dashboard';
-                signinBtn.href = 'seller-dashboard.html';
-            }
-            
-            // Update on login
-            window.addEventListener('storage', (e) => {
-                if (e.key === 'isLoggedIn') {
-                    if (e.newValue === 'true') {
-                        signinBtn.textContent = 'Dashboard';
-                        signinBtn.href = 'seller-dashboard.html';
-                    } else {
-                        signinBtn.textContent = 'Sign In';
-                        signinBtn.href = 'login.html';
-                    }
-                }
-            });
-        }
     </script>
-</body>
+
+    </body>
 </html>

@@ -1,0 +1,308 @@
+/* Product Detail Page Styles */
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 120px 20px 40px;
+}
+
+.product-detail-container {
+  background: rgba(15, 30, 64, 0.4);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(26, 188, 156, 0.2);
+  border-radius: 16px;
+  padding: 32px;
+}
+
+/* Breadcrumb */
+.breadcrumb {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+}
+
+.breadcrumb a {
+  color: #1abc9c;
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  color: #2DD4BF;
+}
+
+.breadcrumb i {
+  font-size: 0.75rem;
+}
+
+.breadcrumb span {
+  color: rgba(255, 255, 255, 0.7);
+}
+
+/* Detail Layout */
+.detail-layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 1024px) {
+  .detail-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Left Column */
+.detail-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Product Image Large */
+.product-image-large {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(26, 188, 156, 0.3);
+  border-radius: 12px;
+  height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.image-placeholder-large {
+  font-size: 4rem;
+  color: #1abc9c;
+}
+
+.product-image-large .verified-badge {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  background: rgba(34, 197, 94, 0.2);
+  border: 1px solid rgba(34, 197, 94, 0.5);
+  color: #22c55e;
+  padding: 8px 16px;
+  border-radius: 20px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* Price Header */
+.price-header {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(26, 188, 156, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.price-header h1 {
+  color: white;
+  font-size: 1.75rem;
+  font-weight: 700;
+  margin: 0 0 12px 0;
+}
+
+.price-header .price {
+  color: #f97316;
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+/* Quick Info */
+.quick-info {
+  display: flex;
+  gap: 24px;
+}
+
+.info-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.875rem;
+}
+
+.info-item i {
+  color: #1abc9c;
+}
+
+/* Right Column */
+.detail-right {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* Specs Section */
+.specs-section {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(26, 188, 156, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.specs-section h2 {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 20px 0;
+}
+
+/* Specs Grid */
+.specs-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+
+.spec-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: rgba(15, 23, 42, 0.4);
+  border: 1px solid rgba(51, 65, 85, 1);
+  border-radius: 8px;
+}
+
+.spec-label {
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.spec-value {
+  color: white;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+/* WhatsApp Section */
+.whatsapp-section {
+  margin-top: auto;
+}
+
+.whatsapp-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  background: #25D366;
+  border: none;
+  border-radius: 12px;
+  padding: 16px 24px;
+  color: white;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+
+.whatsapp-button:hover {
+  background: #22c55e;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-button i {
+  font-size: 1.25rem;
+}
+
+/* Description Section */
+.description-section {
+  background: rgba(15, 23, 42, 0.6);
+  border: 1px solid rgba(26, 188, 156, 0.3);
+  border-radius: 12px;
+  padding: 24px;
+}
+
+.description-section h2 {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin: 0 0 16px 0;
+}
+
+.description-section p {
+  color: rgba(255, 255, 255, 0.8);
+  font-size: 1rem;
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* Floating WhatsApp Button for Mobile */
+.floating-whatsapp {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  z-index: 1000;
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .floating-whatsapp {
+    display: block;
+  }
+  
+  .whatsapp-section {
+    display: none;
+  }
+}
+
+.whatsapp-float {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 60px;
+  height: 60px;
+  background: #25D366;
+  border-radius: 50%;
+  color: white;
+  font-size: 1.5rem;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.4);
+  transition: all 0.3s ease;
+}
+
+.whatsapp-float:hover {
+  background: #22c55e;
+  transform: scale(1.1);
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .container {
+    padding: 100px 16px 24px;
+  }
+  
+  .product-detail-container {
+    padding: 20px;
+  }
+  
+  .product-image-large {
+    height: 250px;
+  }
+  
+  .specs-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .price-header h1 {
+    font-size: 1.25rem;
+  }
+  
+  .price-header .price {
+    font-size: 1.5rem;
+  }
+}

@@ -7,10 +7,11 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="css/seller-dashboard.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 </head>
 <body>
     <!-- Background Video -->
-    <video autoplay muted loop playsinline id="bg-video">
+    <video autoplay muted loop playsinline id="bg-video" poster="assets/images/video-poster.jpg">
         <source src="assets/videos/machinery-bg.mp4" type="video/mp4">
     </video>
 
@@ -21,14 +22,20 @@
         <!-- Sidebar Navigation -->
         <aside class="sidebar">
             <div class="sidebar-header">
-                <div class="user-profile">
-                    <div class="profile-picture">
-                        <i class="fas fa-user"></i>
-                    </div>
-                    <div class="user-info">
-                        <h3>John Doe</h3>
-                        <span class="seller-badge">Verified Seller</span>
-                    </div>
+                <div class="sidebar-logo-container">
+                    <a href="index.html" class="sidebar-logo-link">
+                        <img src="assets/images/logo_2.jpeg" alt="MechSwap Logo" class="sidebar-logo-img">
+                    </a>
+                </div>
+            </div>
+            
+            <div class="user-profile">
+                <div class="profile-picture">
+                    <i class="fas fa-user"></i>
+                </div>
+                <div class="user-info">
+                    <h3>John Doe</h3>
+                    <span class="seller-badge">Verified Seller</span>
                 </div>
             </div>
             
@@ -50,13 +57,15 @@
                         <i class="fas fa-user-cog"></i>
                         <span>Profile</span>
                     </li>
-                    <li class="nav-item" data-view="security">
-                        <i class="fas fa-shield-alt"></i>
-                        <span>Security</span>
-                    </li>
                     <li class="nav-item logout">
                         <i class="fas fa-sign-out-alt"></i>
                         <span>Logout</span>
+                    </li>
+                    <li class="nav-item home-link">
+                        <a href="index.html" class="nav-link-external">
+                            <i class="fas fa-home"></i>
+                            <span>Back to Website</span>
+                        </a>
                     </li>
                 </ul>
             </nav>
@@ -67,6 +76,10 @@
             <!-- Overview View -->
             <div class="content-view active" id="overview">
                 <h1>Dashboard Overview</h1>
+                <div class="chart-container">
+                    <h2>Revenue Trends</h2>
+                    <canvas id="revenueChart"></canvas>
+                </div>
                 <div class="stats-grid">
                     <div class="stat-card">
                         <i class="fas fa-box"></i>
@@ -76,17 +89,17 @@
                         </div>
                     </div>
                     <div class="stat-card">
-                        <i class="fas fa-eye"></i>
-                        <div class="stat-info">
-                            <h3>Total Views</h3>
-                            <p>1,234</p>
-                        </div>
-                    </div>
-                    <div class="stat-card">
                         <i class="fas fa-handshake"></i>
                         <div class="stat-info">
                             <h3>Sold Items</h3>
                             <p>12</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <i class="fas fa-eye"></i>
+                        <div class="stat-info">
+                            <h3>Total Views</h3>
+                            <p>1,234</p>
                         </div>
                     </div>
                     <div class="stat-card">
@@ -220,15 +233,18 @@
                 <form class="profile-form" id="profile-form">
                     <div class="form-group">
                         <label for="company-name">Company Name</label>
-                        <input type="text" id="company-name" name="company-name" placeholder="Enter company name">
+                        <input type="text" id="company-name" name="company-name" placeholder="Enter company name" required>
+                        <span class="error-message">Required field</span>
                     </div>
                     <div class="form-group">
                         <label for="gst-number">GST Number</label>
-                        <input type="text" id="gst-number" name="gst-number" placeholder="Enter GST number">
+                        <input type="text" id="gst-number" name="gst-number" placeholder="Enter GST number" required>
+                        <span class="error-message">Required field</span>
                     </div>
                     <div class="form-group">
                         <label for="factory-address">Factory Address</label>
-                        <textarea id="factory-address" name="factory-address" rows="4" placeholder="Enter factory address"></textarea>
+                        <textarea id="factory-address" name="factory-address" rows="4" placeholder="Enter factory address" required></textarea>
+                        <span class="error-message">Required field</span>
                     </div>
                     <div class="form-actions">
                         <button type="submit" class="btn-primary">Save Profile</button>
@@ -236,28 +252,40 @@
                 </form>
             </div>
 
-            <!-- Security View -->
-            <div class="content-view" id="security">
-                <h1>Security Settings</h1>
-                <form class="security-form" id="security-form">
-                    <div class="form-group">
-                        <label for="current-password">Current Password</label>
-                        <input type="password" id="current-password" name="current-password" placeholder="Enter current password">
-                    </div>
-                    <div class="form-group">
-                        <label for="new-password">New Password</label>
-                        <input type="password" id="new-password" name="new-password" placeholder="Enter new password">
-                    </div>
-                    <div class="form-group">
-                        <label for="confirm-password">Confirm Password</label>
-                        <input type="password" id="confirm-password" name="confirm-password" placeholder="Confirm new password">
-                    </div>
-                    <div class="form-actions">
-                        <button type="submit" class="btn-primary">Change Password</button>
-                    </div>
-                </form>
-            </div>
         </main>
+    </div>
+
+    <!-- Edit Modal -->
+    <div id="edit-modal" class="modal">
+        <div class="modal-content">
+            <h2>Edit Machinery</h2>
+            <form id="edit-form">
+                <div class="form-group">
+                    <label for="edit-machine-name">Machine Name</label>
+                    <input type="text" id="edit-machine-name" name="machine-name" required>
+                </div>
+                <div class="form-group">
+                    <label for="edit-category">Category</label>
+                    <select id="edit-category" name="category" required>
+                        <option value="CNC">CNC</option>
+                        <option value="Lathes">Lathes</option>
+                        <option value="Milling">Milling</option>
+                        <option value="Drilling">Drilling</option>
+                        <option value="Grinding">Grinding</option>
+                        <option value="Press">Press</option>
+                        <option value="Other">Other</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="edit-price">Price (₹)</label>
+                    <input type="number" id="edit-price" name="price" required>
+                </div>
+                <div class="modal-actions">
+                    <button type="button" class="btn-cancel" id="cancel-edit">Cancel</button>
+                    <button type="submit" class="btn-save">Save Changes</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="js/mockData.js"></script>

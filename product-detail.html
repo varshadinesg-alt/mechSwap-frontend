@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Product Details - MechSwap</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/product-list.css">
+    <link rel="stylesheet" href="css/product-detail.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+</head>
+<body>
+    <!-- Background Video -->
+    <video autoplay muted loop playsinline id="bg-video" poster="assets/images/video-poster.jpg">
+        <source src="assets/videos/machinery-bg.mp4" type="video/mp4">
+    </video>
+
+    <!-- Video Overlay -->
+    <div class="video-overlay"></div>
+
+    <!-- Navbar Placeholder -->
+    <div id="navbar-placeholder"></div>
+
+    <div class="container">
+        <div class="product-detail-container">
+            <!-- Breadcrumb -->
+            <div class="breadcrumb">
+                <a href="product-list.html">Marketplace</a>
+                <i class="fas fa-chevron-right"></i>
+                <span id="breadcrumb-title">Product Details</span>
+            </div>
+
+            <div class="detail-layout">
+                <!-- Left Column: Image and Basic Info -->
+                <div class="detail-left">
+                    <!-- Product Image -->
+                    <div class="product-image-large">
+                        <div class="image-placeholder-large">
+                            <i class="fas fa-cogs"></i>
+                        </div>
+                        <span class="verified-badge" id="verified-badge">
+                            <i class="fas fa-check-circle"></i> Verified
+                        </span>
+                    </div>
+
+                    <!-- Price Header -->
+                    <div class="price-header">
+                        <h1 id="product-name">Haas CNC Machine</h1>
+                        <p class="price" id="product-price">₹4,50,000</p>
+                    </div>
+
+                    <!-- Quick Info -->
+                    <div class="quick-info">
+                        <div class="info-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <span id="product-location">Mumbai</span>
+                        </div>
+                        <div class="info-item">
+                            <i class="fas fa-tag"></i>
+                            <span id="product-category">CNC Machines</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Right Column: Technical Specs -->
+                <div class="detail-right">
+                    <!-- Technical Specs Grid -->
+                    <div class="specs-section">
+                        <h2>Technical Specifications</h2>
+                        <div class="specs-grid">
+                            <div class="spec-item">
+                                <span class="spec-label">Machine Type</span>
+                                <span class="spec-value" id="spec-machine-type">CNC Machine</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Usage Type</span>
+                                <span class="spec-value" id="spec-usage-type">Industrial</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Subcategory</span>
+                                <span class="spec-value" id="spec-subcategory">CNC Lathe</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Model</span>
+                                <span class="spec-value" id="spec-model">VF-2</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Location</span>
+                                <span class="spec-value" id="spec-location">Mumbai</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Years of Use</span>
+                                <span class="spec-value" id="spec-years-use">10 years</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Condition</span>
+                                <span class="spec-value" id="spec-condition">Excellent</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Warranty</span>
+                                <span class="spec-value" id="spec-warranty">6 months</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Capacity</span>
+                                <span class="spec-value" id="spec-capacity">315 KVA</span>
+                            </div>
+                            <div class="spec-item">
+                                <span class="spec-label">Quantity</span>
+                                <span class="spec-value" id="spec-quantity">1</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Chat on WhatsApp Button -->
+                    <div class="whatsapp-section">
+                        <a href="#" class="whatsapp-button">
+                            <i class="fab fa-whatsapp"></i>
+                            Chat on WhatsApp
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Description Section -->
+            <div class="description-section">
+                <h2>Description</h2>
+                <p id="product-description">
+                    This Haas CNC Machine is in excellent condition and has been well-maintained. 
+                    It features advanced CNC controls, high precision machining capabilities, and 
+                    is suitable for various industrial applications. The machine comes with all 
+                    necessary accessories and documentation.
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Floating WhatsApp Button for Mobile -->
+    <div class="floating-whatsapp">
+        <a href="#" class="whatsapp-float">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+    </div>
+
+    <script src="js/main.js"></script>
+    <script src="js/product-detail.js"></script>
+</body>
+</html>

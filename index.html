@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- Video Background -->
-    <video autoplay muted loop playsinline id="bgVideo">
+    <video autoplay muted loop playsinline id="bgVideo" poster="assets/images/video-poster.jpg">
         <source src="assets/videos/machinery-bg.mp4" type="video/mp4">
     </video>
 
@@ -22,18 +22,19 @@
     <!-- Transition Gradient -->
     <div class="transition-gradient"></div>
     
-    <!-- Header Menu -->
+    <!-- Navbar -->
     <header class="header-menu">
         <nav class="nav-container">
             <div class="nav-logo">
                 <img src="assets/images/logo_2.jpeg" alt="MechSwap" class="nav-logo-img">
             </div>
             <ul class="nav-links">
+                <li><a href="product-list.html" class="nav-link">Categories</a></li>
+                <li><a href="product-list.html" class="nav-link">Marketplace</a></li>
             </ul>
             <div class="nav-auth-buttons">
-                <a href="product-list.html" class="nav-link">Categories</a>
                 <a href="login.html" class="btn btn-outline" id="signin-btn">Sign In</a>
-                <a href="signup.html" class="btn btn-primary">Get Started</a>
+                <a href="signup.html" class="btn btn-primary" id="getstarted-btn">Get Started</a>
             </div>
         </nav>
     </header>
@@ -86,7 +87,7 @@
         </div>
     </section>
 
-    <!-- Footer Section -->
+    <!-- Footer -->
     <footer class="footer">
         <div class="footer-container">
             <div class="footer-grid">
@@ -147,31 +148,5 @@
     </footer>
 
     <script src="js/main.js"></script>
-    <script>
-        // LocalStorage state simulation for Sign In/Dashboard toggle
-        const signinBtn = document.getElementById('signin-btn');
-        
-        if (signinBtn) {
-            const isLoggedIn = localStorage.getItem('isLoggedIn');
-            
-            if (isLoggedIn === 'true') {
-                signinBtn.textContent = 'Dashboard';
-                signinBtn.href = 'seller-dashboard.html';
-            }
-            
-            // Update on login
-            window.addEventListener('storage', (e) => {
-                if (e.key === 'isLoggedIn') {
-                    if (e.newValue === 'true') {
-                        signinBtn.textContent = 'Dashboard';
-                        signinBtn.href = 'seller-dashboard.html';
-                    } else {
-                        signinBtn.textContent = 'Sign In';
-                        signinBtn.href = 'login.html';
-                    }
-                }
-            });
-        }
-    </script>
 </body>
 </html>

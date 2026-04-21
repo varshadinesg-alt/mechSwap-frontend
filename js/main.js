@@ -1,20 +1,62 @@
 // MechSwap - Main JavaScript File
 
-// Placeholder function for handling State/City dropdown logic
-function initLocationDropdowns(stateSelectId, citySelectId) {
-  // Initialize state dropdown
-  populateStates(stateSelectId);
+// Layout Injection Function
+async function loadLayout() {
+  const navbarPlaceholder = document.getElementById('navbar-placeholder');
+
+  console.log('Loading layout...');
+
+  if (navbarPlaceholder) {
+    try {
+      const navbarResponse = await fetch('navbar.html');
+      const navbarHtml = await navbarResponse.text();
+      navbarPlaceholder.innerHTML = navbarHtml;
+      console.log('Navbar loaded successfully');
+    } catch (error) {
+      console.error('Error loading navbar:', error);
+    }
+  } else {
+    console.error('Navbar placeholder not found');
+  }
+
+  // Show user profile if logged in
+  showUserProfile();
+}
+
+// Show user profile if logged in
+function showUserProfile() {
+  const authButtons = document.getElementById('auth-buttons');
+  const userProfile = document.getElementById('user-profile');
+  const logoutBtn = document.getElementById('logout-btn');
   
-  // Initialize city dropdown behavior
-  populateCities(stateSelectId, citySelectId);
+  if (authButtons && userProfile) {
+    const user = localStorage.getItem('user');
+    
+    if (user) {
+      authButtons.style.display = 'none';
+      userProfile.style.display = 'flex';
+    } else {
+      authButtons.style.display = 'flex';
+      userProfile.style.display = 'none';
+    }
+    
+    // Handle logout
+    if (logoutBtn) {
+      logoutBtn.addEventListener('click', () => {
+        localStorage.removeItem('user');
+        localStorage.removeItem('isLoggedIn');
+        window.location.reload();
+      });
+    }
+  }
 }
 
 // DOM Content Loaded Handler
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('DOMContentLoaded', async function() {
   console.log('MechSwap - Main.js loaded');
   
-  // Initialize location dropdowns when page loads
-  // Example usage: initLocationDropdowns('state', 'city');
+  // Load navbar from partial file
+  await loadLayout();
   
   // Add any other global functionality here
   initGlobalInteractions();
@@ -151,12 +193,4 @@ function validateForm(formId) {
     
     return isValid;
   }
-}
-
-// Export functions for use in other modules
-if (typeof module !== 'undefined' && module.exports) {
-  module.exports = {
-    initLocationDropdowns,
-    validateForm
-  };
 }
