@@ -9,6 +9,14 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
+    <!-- Video Background -->
+    <video autoplay muted loop playsinline id="bgVideo" class="video-background">
+        <source src="assets/videos/machinery-bg.mp4" type="video/mp4">
+    </video>
+
+    <!-- Dark Overlay -->
+    <div class="video-overlay"></div>
+
     <!-- Navbar Placeholder -->
     <div id="navbar-placeholder"></div>
 
@@ -236,11 +244,17 @@
     <script>
         // Dynamically render product cards from mockData.js
         const productGrid = document.querySelector('.product-grid');
+        let allMachines = [];
         
         if (productGrid && typeof mockMachines !== 'undefined') {
+            allMachines = [...mockMachines];
+            renderProducts(allMachines);
+        }
+
+        function renderProducts(machines) {
             productGrid.innerHTML = '';
             
-            mockMachines.forEach(machine => {
+            machines.forEach(machine => {
                 const card = document.createElement('div');
                 card.className = 'product-card';
                 card.setAttribute('data-title', machine.name.toLowerCase());
@@ -266,10 +280,61 @@
                 productGrid.appendChild(card);
             });
         }
+
+        // Filter functionality
+        const categoryCheckboxes = document.querySelectorAll('.filter-checkbox');
+        const minPriceInput = document.getElementById('min-price');
+        const maxPriceInput = document.getElementById('max-price');
+        const searchInput = document.getElementById('searchInput');
+
+        function applyFilters() {
+            let filtered = [...allMachines];
+            
+            // Category filter
+            const selectedCategories = [];
+            categoryCheckboxes.forEach(checkbox => {
+                if (checkbox.checked) {
+                    selectedCategories.push(checkbox.nextElementSibling.textContent.toLowerCase());
+                }
+            });
+            
+            if (selectedCategories.length > 0) {
+                filtered = filtered.filter(machine => 
+                    selectedCategories.includes(machine.category.toLowerCase())
+                );
+            }
+            
+            // Price filter
+            const minPrice = parseFloat(minPriceInput?.value) || 0;
+            const maxPrice = parseFloat(maxPriceInput?.value) || Infinity;
+            
+            filtered = filtered.filter(machine => 
+                machine.price >= minPrice && machine.price <= maxPrice
+            );
+            
+            // Search filter
+            const searchTerm = searchInput?.value.toLowerCase() || '';
+            if (searchTerm) {
+                filtered = filtered.filter(machine =>
+                    machine.name.toLowerCase().includes(searchTerm) ||
+                    machine.category.toLowerCase().includes(searchTerm) ||
+                    machine.location.toLowerCase().includes(searchTerm)
+                );
+            }
+            
+            renderProducts(filtered);
+        }
+
+        // Add event listeners to filters
+        categoryCheckboxes.forEach(checkbox => {
+            checkbox.addEventListener('change', applyFilters);
+        });
+
+        if (minPriceInput) minPriceInput.addEventListener('input', applyFilters);
+        if (maxPriceInput) maxPriceInput.addEventListener('input', applyFilters);
+        if (searchInput) searchInput.addEventListener('input', applyFilters);
         
         // Update search functionality to work with dynamic cards
-        const searchInput = document.getElementById('searchInput');
-        
         if (searchInput && productGrid) {
             searchInput.addEventListener('input', function(e) {
                 const searchTerm = e.target.value.toLowerCase().trim();
