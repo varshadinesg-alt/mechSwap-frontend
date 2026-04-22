@@ -3,12 +3,18 @@
 // Layout Injection Function
 async function loadLayout() {
   const navbarPlaceholder = document.getElementById('navbar-placeholder');
-
+  const footerPlaceholder = document.getElementById('footer-placeholder');
 
   if (navbarPlaceholder) {
     const navbarResponse = await fetch('navbar.html');
     const navbarHtml = await navbarResponse.text();
     navbarPlaceholder.innerHTML = navbarHtml;
+  }
+
+  if (footerPlaceholder) {
+    const footerResponse = await fetch('footer.html');
+    const footerHtml = await footerResponse.text();
+    footerPlaceholder.innerHTML = footerHtml;
   }
 
   // Show user profile if logged in
