@@ -73,7 +73,16 @@ body, html {
   align-items: center !important;
 }
 
-/* Product Listings Section */
+/* Product Listings Page Styles */
+
+:root {
+  --primary-teal: #1ABC9C;
+  --primary-teal-dark: #16a085;
+  --glass-bg: rgba(255, 255, 255, 0.05);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-blur: 12px;
+}
+
 .product-listings {
   position: relative;
   z-index: 20;
@@ -357,22 +366,38 @@ body, html {
 
 /* Product Card */
 .product-card {
-  background: rgba(15, 30, 64, 0.4);
-  backdrop-filter: blur(12px);
-  border: 1px solid rgba(26, 188, 156, 0.2);
+  background: var(--glass-bg);
+  backdrop-filter: blur(var(--glass-blur));
+  border: 1px solid var(--glass-border);
   border-radius: 12px;
   overflow: hidden;
-  transition: all 0.3s ease;
-  cursor: pointer;
-  text-decoration: none;
-  display: block;
-  color: inherit;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .product-card:hover {
   transform: translateY(-5px);
-  border-color: rgba(26, 188, 156, 0.5);
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  border-color: var(--primary-teal);
   box-shadow: 0 10px 25px rgba(26, 188, 156, 0.2);
+}
+
+.product-vitals {
+  display: flex;
+  gap: 12px;
+  margin: 8px 0;
+  font-size: 0.85rem;
+  color: rgba(255, 255, 255, 0.7);
+}
+
+.vital-item {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.vital-item i {
+  color: var(--primary-teal);
+  font-size: 0.8rem;
 }
 
 /* Empty State */

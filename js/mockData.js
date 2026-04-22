@@ -9,6 +9,8 @@ const mockMachines = [
     location: "Mumbai",
     condition: "Used",
     year: 2019,
+    yearOfManufacture: 2019,
+    hoursUsed: 4500,
     image: "https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?w=400&h=300&fit=crop",
     specs: {
       brand: "Haas",
@@ -28,6 +30,8 @@ const mockMachines = [
     location: "Bangalore",
     condition: "Used",
     year: 2018,
+    yearOfManufacture: 2018,
+    hoursUsed: 3200,
     image: "https://images.unsplash.com/photo-1504328345606-18bbc8c9d7d1?w=400&h=300&fit=crop",
     specs: {
       brand: "Trumpf",
@@ -46,6 +50,8 @@ const mockMachines = [
     location: "Delhi",
     condition: "Used",
     year: 2020,
+    yearOfManufacture: 2020,
+    hoursUsed: 1800,
     image: "https://images.unsplash.com/photo-1565193566173-7a0ee3dbe261?w=400&h=300&fit=crop",
     specs: {
       brand: "Amada",
@@ -64,6 +70,8 @@ const mockMachines = [
     location: "Chennai",
     condition: "Used",
     year: 2017,
+    yearOfManufacture: 2017,
+    hoursUsed: 6200,
     image: "https://images.unsplash.com/photo-1581092921461-eab62e97a782?w=400&h=300&fit=crop",
     specs: {
       brand: "DMG Mori",
@@ -82,6 +90,8 @@ const mockMachines = [
     location: "Pune",
     condition: "Used",
     year: 2019,
+    yearOfManufacture: 2019,
+    hoursUsed: 3800,
     image: "https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=400&h=300&fit=crop",
     specs: {
       brand: "Komatsu",
@@ -100,6 +110,8 @@ const mockMachines = [
     location: "Hyderabad",
     condition: "Used",
     year: 2020,
+    yearOfManufacture: 2020,
+    hoursUsed: 2100,
     image: "https://images.unsplash.com/photo-1535378437327-b7149466c9d2?w=400&h=300&fit=crop",
     specs: {
       brand: "Mazak",
@@ -118,6 +130,8 @@ const mockMachines = [
     location: "Ahmedabad",
     condition: "Used",
     year: 2018,
+    yearOfManufacture: 2018,
+    hoursUsed: 4500,
     image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?w=400&h=300&fit=crop",
     specs: {
       brand: "FANUC",
@@ -136,6 +150,8 @@ const mockMachines = [
     location: "Surat",
     condition: "Used",
     year: 2016,
+    yearOfManufacture: 2016,
+    hoursUsed: 7200,
     image: "https://images.unsplash.com/photo-1565793298595-6a879b1d9492?w=400&h=300&fit=crop",
     specs: {
       brand: "Trumpf",
@@ -154,6 +170,8 @@ const mockMachines = [
     location: "Jaipur",
     condition: "Used",
     year: 2017,
+    yearOfManufacture: 2017,
+    hoursUsed: 5100,
     image: "https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=400&h=300&fit=crop",
     specs: {
       brand: "Okamoto",
@@ -172,6 +190,8 @@ const mockMachines = [
     location: "Indore",
     condition: "Used",
     year: 2019,
+    yearOfManufacture: 2019,
+    hoursUsed: 2800,
     image: "https://images.unsplash.com/photo-1589254065878-42c9da997008?w=400&h=300&fit=crop",
     specs: {
       brand: "Yamazaki",

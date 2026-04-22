@@ -1,60 +1,7 @@
 // MechSwap - Main JavaScript File
 
-// Layout Injection Function
-async function loadLayout() {
-  const navbarPlaceholder = document.getElementById('navbar-placeholder');
-  const footerPlaceholder = document.getElementById('footer-placeholder');
-
-  if (navbarPlaceholder) {
-    const navbarResponse = await fetch('navbar.html');
-    const navbarHtml = await navbarResponse.text();
-    navbarPlaceholder.innerHTML = navbarHtml;
-  }
-
-  if (footerPlaceholder) {
-    const footerResponse = await fetch('footer.html');
-    const footerHtml = await footerResponse.text();
-    footerPlaceholder.innerHTML = footerHtml;
-  }
-
-  // Show user profile if logged in
-  showUserProfile();
-}
-
-// Show user profile if logged in
-function showUserProfile() {
-  const authButtons = document.getElementById('auth-buttons');
-  const userProfile = document.getElementById('user-profile');
-  const logoutBtn = document.getElementById('logout-btn');
-  
-  if (authButtons && userProfile) {
-    const user = localStorage.getItem('user');
-    
-    if (user) {
-      authButtons.style.display = 'none';
-      userProfile.style.display = 'flex';
-    } else {
-      authButtons.style.display = 'flex';
-      userProfile.style.display = 'none';
-    }
-    
-    // Handle logout
-    if (logoutBtn) {
-      logoutBtn.addEventListener('click', () => {
-        localStorage.removeItem('user');
-        localStorage.removeItem('isLoggedIn');
-        window.location.reload();
-      });
-    }
-  }
-}
-
 // DOM Content Loaded Handler
-document.addEventListener('DOMContentLoaded', async function() {
-  
-  // Load navbar from partial file
-  await loadLayout();
-  
+document.addEventListener('DOMContentLoaded', function() {
   // Add any other global functionality here
   initGlobalInteractions();
 });

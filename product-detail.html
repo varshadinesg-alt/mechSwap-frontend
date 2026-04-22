@@ -261,6 +261,8 @@
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
+    <script src="js/navbar.js"></script>
+    <script src="js/footer.js"></script>
     <script src="js/mockData.js"></script>
     <script src="js/main.js"></script>
     <script src="js/product-detail.js"></script>
@@ -327,7 +329,7 @@
                 header.addEventListener('click', function() {
                     const isActive = item.classList.contains('active');
 
-                    // Close all accordions
+                    // Close all accordions with smooth transition
                     accordionItems.forEach(otherItem => {
                         const otherContent = otherItem.querySelector('.detail-accordion-content');
                         const otherIcon = otherItem.querySelector('.accordion-icon');
