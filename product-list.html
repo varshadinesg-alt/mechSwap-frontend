@@ -10,7 +10,7 @@
 </head>
 <body>
     <!-- Video Background -->
-    <video autoplay muted loop playsinline id="bgVideo" class="video-background">
+    <video autoPlay muted loop playsInline id="bgVideo" class="video-background">
         <source src="assets/videos/machinery-bg.mp4" type="video/mp4">
     </video>
 
@@ -254,10 +254,10 @@
         function renderProducts(machines) {
             productGrid.innerHTML = '';
 
-            machines.forEach((machine, index) => {
+            machines.forEach((machine) => {
                 const card = document.createElement('a');
                 card.className = 'product-card';
-                card.href = `product-detail.html?id=${index}`;
+                card.href = `product-detail.html?id=${machine.id}`;
                 card.setAttribute('data-title', machine.name.toLowerCase());
                 card.setAttribute('data-category', machine.category.toLowerCase());
                 card.setAttribute('data-location', machine.location.toLowerCase());

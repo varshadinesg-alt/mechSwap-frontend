@@ -12,7 +12,7 @@
 </head>
 <body>
     <!-- Video Background -->
-    <video autoplay muted loop playsinline id="bgVideo" class="video-background">
+    <video autoPlay muted loop playsInline id="bgVideo" class="video-background">
         <source src="assets/videos/machinery-bg.mp4" type="video/mp4">
     </video>
 
@@ -276,7 +276,7 @@
             const machineId = getQueryParam('id');
 
             if (machineId !== null && typeof mockMachines !== 'undefined') {
-                const machine = mockMachines[machineId];
+                const machine = mockMachines.find(m => m.id === parseInt(machineId));
                 if (machine) {
                     // Update page content with machine data
                     document.getElementById('product-name').textContent = machine.name;

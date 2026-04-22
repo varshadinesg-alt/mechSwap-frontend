@@ -75,6 +75,8 @@ body, html {
 
 /* Product Listings Section */
 .product-listings {
+  position: relative;
+  z-index: 20;
   background: #2C3E50 !important;
   min-height: 100vh;
   padding: 20px 0;
