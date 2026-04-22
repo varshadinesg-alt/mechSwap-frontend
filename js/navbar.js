@@ -1,7 +1,7 @@
 // Global Navbar Injection Script
 function loadNavbar() {
     const navbarPlaceholder = document.getElementById('navbar-placeholder');
-    
+
     if (navbarPlaceholder) {
         const navbarHTML = `
             <!-- Header Menu -->
@@ -10,7 +10,10 @@ function loadNavbar() {
                     <div class="nav-logo">
                         <img src="assets/images/logo_2.jpeg" alt="MechSwap" class="nav-logo-img">
                     </div>
-                    <ul class="nav-links">
+                    <button class="mobile-menu-toggle" id="mobile-menu-toggle">
+                        <i class="fas fa-bars"></i>
+                    </button>
+                    <ul class="nav-links" id="nav-links">
                         <li><a href="product-list.html" class="nav-link">Categories</a></li>
                         <li><a href="product-list.html" class="nav-link">Marketplace</a></li>
                         <li><a href="about.html" class="nav-link">About Us</a></li>
@@ -37,9 +40,39 @@ function loadNavbar() {
                 </nav>
             </header>
         `;
-        
+
         navbarPlaceholder.innerHTML = navbarHTML;
         showUserProfile();
+        initMobileMenu();
+    }
+}
+
+function initMobileMenu() {
+    const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+    const navLinks = document.getElementById('nav-links');
+
+    if (mobileMenuToggle && navLinks) {
+        mobileMenuToggle.addEventListener('click', function() {
+            navLinks.classList.toggle('active');
+            const icon = mobileMenuToggle.querySelector('i');
+            if (navLinks.classList.contains('active')) {
+                icon.classList.remove('fa-bars');
+                icon.classList.add('fa-times');
+            } else {
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            }
+        });
+
+        // Close menu when clicking on a link
+        navLinks.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navLinks.classList.remove('active');
+                const icon = mobileMenuToggle.querySelector('i');
+                icon.classList.remove('fa-times');
+                icon.classList.add('fa-bars');
+            });
+        });
     }
 }
 
