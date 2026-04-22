@@ -253,14 +253,17 @@
 
         function renderProducts(machines) {
             productGrid.innerHTML = '';
-            
-            machines.forEach(machine => {
-                const card = document.createElement('div');
+
+            machines.forEach((machine, index) => {
+                const card = document.createElement('a');
                 card.className = 'product-card';
+                card.href = `product-detail.html?id=${index}`;
                 card.setAttribute('data-title', machine.name.toLowerCase());
                 card.setAttribute('data-category', machine.category.toLowerCase());
                 card.setAttribute('data-location', machine.location.toLowerCase());
-                
+                card.style.zIndex = '20';
+                card.style.position = 'relative';
+
                 card.innerHTML = `
                     <div class="product-image">
                         <img src="${machine.image}" alt="${machine.name}" class="product-img" loading="lazy">
@@ -273,10 +276,10 @@
                         <p class="product-category">${machine.category}</p>
                         <p class="product-price">₹${machine.price.toLocaleString()}</p>
                         <p class="product-location"><i class="fas fa-map-marker-alt"></i> ${machine.location}</p>
-                        <button class="btn btn-primary view-details" onclick="window.open('https://wa.me/919914865830?text=I\\'m interested in your ${machine.name}', '_blank')">Chat on WhatsApp</button>
+                        <button class="btn btn-primary view-details" onclick="event.stopPropagation(); window.open('https://wa.me/919914865830?text=I\\'m interested in your ${machine.name}', '_blank')">Chat on WhatsApp</button>
                     </div>
                 `;
-                
+
                 productGrid.appendChild(card);
             });
         }

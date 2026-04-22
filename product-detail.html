@@ -261,8 +261,52 @@
     <!-- Footer Placeholder -->
     <div id="footer-placeholder"></div>
 
+    <script src="js/mockData.js"></script>
     <script src="js/main.js"></script>
     <script src="js/product-detail.js"></script>
+    <script>
+        // Parse ID from URL query parameters
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+
+        // Load machine data based on ID
+        document.addEventListener('DOMContentLoaded', function() {
+            const machineId = getQueryParam('id');
+
+            if (machineId !== null && typeof mockMachines !== 'undefined') {
+                const machine = mockMachines[machineId];
+                if (machine) {
+                    // Update page content with machine data
+                    document.getElementById('product-name').textContent = machine.name;
+                    document.getElementById('product-price').textContent = '₹' + machine.price.toLocaleString();
+                    document.getElementById('product-location').textContent = machine.location;
+                    document.getElementById('product-category').textContent = machine.category;
+                    document.getElementById('product-description').textContent = machine.description || 'This machine is in excellent condition and has been well-maintained.';
+
+                    // Update accordion content
+                    document.getElementById('spec-machine-type').textContent = machine.machineType || machine.category;
+                    document.getElementById('spec-model').textContent = machine.model || 'N/A';
+                    document.getElementById('spec-capacity').textContent = machine.capacity || 'N/A';
+                    document.getElementById('spec-quantity').textContent = machine.quantity || '1';
+                    document.getElementById('spec-years-use').textContent = machine.yearsUse || 'N/A';
+                    document.getElementById('spec-condition').textContent = machine.condition || 'Good';
+                    document.getElementById('spec-warranty').textContent = machine.warranty || 'N/A';
+                    document.getElementById('spec-subcategory').textContent = machine.subcategory || machine.category;
+                    document.getElementById('spec-location').textContent = machine.location;
+                    document.getElementById('spec-usage-type').textContent = machine.usageType || 'Industrial';
+                    document.getElementById('spec-description').textContent = machine.description || 'This machine is in excellent condition and has been well-maintained.';
+
+                    // Update WhatsApp link
+                    const whatsappButton = document.querySelector('.whatsapp-button');
+                    if (whatsappButton) {
+                        whatsappButton.href = `https://wa.me/919914865830?text=I'm interested in your ${machine.name}`;
+                    }
+                }
+            }
+        });
+    </script>
     <script>
         // Accordion functionality for product detail page
         document.addEventListener('DOMContentLoaded', function() {

@@ -9,6 +9,7 @@
   object-fit: cover;
   z-index: -2;
   filter: brightness(0.4) contrast(1.1);
+  pointer-events: none;
 }
 
 .video-overlay {
@@ -19,6 +20,7 @@
   height: 100%;
   background: rgba(15, 23, 42, 0.8);
   z-index: -1;
+  pointer-events: none;
 }
 
 * {
