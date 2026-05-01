@@ -1,4 +1,7 @@
-// Auth JavaScript - Login and Signup Functionality
+// Auth JavaScript - Login and Signup Functionality with Backend API
+
+// API Base URL
+const API_BASE_URL = 'http://localhost:5000/api/auth';
 
 // State/City Data for Hierarchical Dropdowns
 const stateCityData = {
@@ -89,61 +92,99 @@ if (chipsContainer && interestsInput) {
   });
 }
 
-// Login Form Submission with Redirect
+// Login Form Submission with API Call
 if (loginForm) {
-  loginForm.addEventListener('submit', (e) => {
+  loginForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const email = document.getElementById('email').value;
+    const password = document.getElementById('password').value;
     
-    // Simulate login (in production, this would be an API call)
-    
-    // Set localStorage for logged in state
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('user', JSON.stringify({ email }));
-    
-    // Redirect to seller dashboard
-    window.location.href = 'seller-dashboard.html';
+    try {
+      const response = await fetch(`${API_BASE_URL}/login`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, password })
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        // Store in AuthContext
+        AuthContext.login(data.token, data.user);
+        Toast.success('Welcome back!');
+        
+        // Redirect to seller dashboard
+        setTimeout(() => {
+          window.location.href = 'seller-dashboard.html';
+        }, 1000);
+      } else {
+        Toast.error(data.message || 'Invalid credentials');
+      }
+    } catch (error) {
+      console.error('Login error:', error);
+      Toast.error('Server error. Please try again.');
+    }
   });
 }
 
-// Signup Form Submission with Redirect
+// Signup Form Submission with API Call
 if (signupForm) {
-  signupForm.addEventListener('submit', (e) => {
+  signupForm.addEventListener('submit', async (e) => {
     e.preventDefault();
     
     const formData = {
       name: document.getElementById('name').value,
       email: document.getElementById('email').value,
       phone: document.getElementById('phone').value,
-      company: document.getElementById('company').value,
       state: document.getElementById('state').value,
       city: document.getElementById('city').value,
-      interests: document.getElementById('interests').value,
+      interests: document.getElementById('interests').value ? document.getElementById('interests').value.split(',') : [],
       password: document.getElementById('password').value,
       confirmPassword: document.getElementById('confirm-password').value
     };
     
     // Validate passwords match
     if (formData.password !== formData.confirmPassword) {
-      alert('Passwords do not match!');
+      Toast.error('Passwords do not match!');
       return;
     }
     
     // Validate at least one interest selected
-    if (!formData.interests) {
-      alert('Please select at least one industrial interest!');
+    if (formData.interests.length === 0) {
+      Toast.error('Please select at least one industrial interest!');
       return;
     }
     
-    // Simulate signup (in production, this would be an API call)
-    
-    // Set localStorage for logged in state
-    localStorage.setItem('isLoggedIn', 'true');
-    localStorage.setItem('user', JSON.stringify({ email: formData.email }));
-    
-    // Redirect to seller dashboard
-    window.location.href = 'seller-dashboard.html';
+    try {
+      const response = await fetch(`${API_BASE_URL}/signup`, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(formData)
+      });
+      
+      const data = await response.json();
+      
+      if (data.success) {
+        // Store in AuthContext
+        AuthContext.login(data.token, data.user);
+        Toast.success('Account created successfully!');
+        
+        // Redirect to seller dashboard
+        setTimeout(() => {
+          window.location.href = 'seller-dashboard.html';
+        }, 1000);
+      } else {
+        Toast.error(data.message || 'Signup failed');
+      }
+    } catch (error) {
+      console.error('Signup error:', error);
+      Toast.error('Server error. Please try again.');
+    }
   });
 }
 
@@ -152,7 +193,7 @@ document.querySelectorAll('.social-btn').forEach(button => {
   button.addEventListener('click', () => {
     const provider = button.classList.contains('google') ? 'Google' : 'Facebook';
     // In production, this would redirect to OAuth flow
-    alert(`${provider} login - Coming soon!`);
+    Toast.error(`${provider} login - Coming soon!`);
   });
 });
 

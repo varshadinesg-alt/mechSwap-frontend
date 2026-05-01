@@ -109,9 +109,9 @@ body, html {
 }
 
 .auth-card {
-  background: rgba(26, 62, 80, 0.9);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.1) 0%, rgba(255, 255, 255, 0.05) 100%);
+  backdrop-filter: blur(16px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
   border-radius: var(--radius-xl);
   padding: var(--spacing-2xl);
   width: 100%;

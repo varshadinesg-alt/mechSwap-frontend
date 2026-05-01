@@ -77,15 +77,14 @@ function initMobileMenu() {
 }
 
 function showUserProfile() {
-    const isLoggedIn = localStorage.getItem('isLoggedIn') === 'true';
     const authButtons = document.getElementById('auth-buttons');
     const userProfile = document.getElementById('user-profile');
     const userName = document.getElementById('user-name');
-    
-    if (isLoggedIn) {
-        const storedUserName = localStorage.getItem('userName');
-        if (userName && storedUserName) {
-            userName.textContent = storedUserName;
+
+    if (AuthContext.isAuthenticated()) {
+        const currentUser = AuthContext.getCurrentUser();
+        if (userName && currentUser) {
+            userName.textContent = currentUser.name;
         }
         if (authButtons) authButtons.style.display = 'none';
         if (userProfile) userProfile.style.display = 'flex';
@@ -98,9 +97,11 @@ function showUserProfile() {
 // Logout functionality
 document.addEventListener('click', function(e) {
     if (e.target && e.target.id === 'logout-btn') {
-        localStorage.removeItem('isLoggedIn');
-        localStorage.removeItem('userName');
-        window.location.href = 'index.html';
+        AuthContext.logout();
+        Toast.success('Logged out successfully');
+        setTimeout(() => {
+            window.location.href = 'index.html';
+        }, 1000);
     }
 });
 
